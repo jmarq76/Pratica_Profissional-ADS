@@ -11,3 +11,8 @@
 /EmpregaMais-API/Domain/obj
 /EmpregaMais-API/EmpregaMais-API/obj
 /EmpregaMais-API/Infrastructure/obj
+/EmpregaMais-API/.vs/EmpregaMais-API/v17
+/EmpregaMais-API/Application/bin/Debug/net6.0
+/EmpregaMais-API/Domain/bin/Debug/net6.0
+/EmpregaMais-API/EmpregaMais-API/bin/Debug/net6.0
+/EmpregaMais-API/Infrastructure/bin/Debug/net6.0
