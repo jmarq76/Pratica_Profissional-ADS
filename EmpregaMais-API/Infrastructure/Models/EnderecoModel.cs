@@ -1,9 +1,12 @@
 ﻿using Infrastructure.BaseClasses;
+using Infrastructure.Constantes;
 using Infrastructure.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Models
 {
-    public class Endereco : BaseModel
+    [Table(ConstantesTabelas.ENDERECOS)]
+    public class EnderecoModel : BaseModel
     {
         public Guid IdUsuario { get; set; }
         public string? Logradouro { get; set; }
@@ -12,5 +15,8 @@ namespace Infrastructure.Models
         public string? Uf { get; set; }
         public string? Pais { get; set; }
         public TipoEndereco TipoEndereco { get; set; }
+
+        [NotMapped]
+        public UsuarioModel Usuario { get; set; }
     }
 }
