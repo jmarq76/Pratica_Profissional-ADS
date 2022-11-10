@@ -6,16 +6,12 @@
 # Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
 ################################################################################
 
-/EmpregaMais-API/.vs/EmpregaMais-API/FileContentIndex/6ab05baf-233c-4508-a543-8f58843d8513.vsidx
-/EmpregaMais-API/.vs/EmpregaMais-API/FileContentIndex/4c8f7886-f775-4440-936d-2e17db80bec9.vsidx
-/EmpregaMais-API/.vs/EmpregaMais-API/FileContentIndex/3436346e-51c1-41f8-8241-d498b751dd08.vsidx
-/EmpregaMais-API/.vs/EmpregaMais-API/FileContentIndex/1f68bbfc-c368-4f35-a223-34657721dfef.vsidx
+/EmpregaMais-API/.vs
 /EmpregaMais-API/Application/obj/Debug/net6.0
 /EmpregaMais-API/Application/obj
 /EmpregaMais-API/Domain/obj
 /EmpregaMais-API/EmpregaMais-API/obj
 /EmpregaMais-API/Infrastructure/obj
-/EmpregaMais-API/.vs/EmpregaMais-API/v17
 /EmpregaMais-API/Application/bin/Debug/net6.0
 /EmpregaMais-API/Domain/bin/Debug/net6.0
 /EmpregaMais-API/EmpregaMais-API/bin/Debug/net6.0
