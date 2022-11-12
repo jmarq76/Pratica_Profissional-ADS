@@ -18,6 +18,12 @@ namespace Infrastructure.Models
         [NotMapped]
         public UsuarioModel Usuario { get; set; }
         [NotMapped]
-        public List<VagaUsuarioModel> VagasUsuarios { get; set; }
+        public IEnumerable<VagaUsuarioModel> VagasUsuarios { get; set; }
+        [NotMapped]
+        public IEnumerable<RedeSocialModel> RedesSociais { get; set; }
+        [NotMapped]
+        public IEnumerable<HistoricoAcademicoModel> HistoricosAcademicos { get; set; }
+        [NotMapped]
+        public IEnumerable<HistoricoProfissionalModel> HistoricosProfissionais { get; set; }
     }
 }

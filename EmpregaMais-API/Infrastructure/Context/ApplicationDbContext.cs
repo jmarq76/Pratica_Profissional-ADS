@@ -18,11 +18,15 @@ namespace Infrastructure.Context
             modelBuilder.ApplyConfiguration(new ContatoEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new DenuncaEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new EnderecoEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new HistoricoAcademicoEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new HistoricoProfissionalEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new IdiomaEnityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new LoginEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new PerfilPfEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new PerfilPjEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new RedeSocialEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new UsuarioEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new VagaEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new VagaUsuarioEntityTypeConfiguration());
         }
 
@@ -30,10 +34,13 @@ namespace Infrastructure.Context
         public DbSet<ContatoModel> Contatos { get; set; }
         public DbSet<DenunciaModel> Denuncias { get; set; }
         public DbSet<EnderecoModel> Enderecos { get; set; }
+        public DbSet<HistoricoAcademicoModel> HistoricosAcademicos { get; set; }
+        public DbSet<HistoricoProfissionalModel> HistoricosProfissionais { get; set; }
         public DbSet<IdiomaModel> Idiomas { get; set; }
         public DbSet<LoginModel> Logins { get; set; }
         public DbSet<PerfilPfModel> PerfilPf { get; set; }
         public DbSet<PerfilPjModel> PerfilPj { get; set; }
+        public DbSet<RedeSocialModel> RedesSociais { get; set; }
         public DbSet<UsuarioModel> Usuarios { get; set; }
         public DbSet<VagaModel> Vagas { get; set; }
         public DbSet<VagaUsuarioModel> VagasUsuarios { get; set; }
