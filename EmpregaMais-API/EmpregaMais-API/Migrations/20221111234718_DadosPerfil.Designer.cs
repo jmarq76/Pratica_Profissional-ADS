@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmpregaMaisAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221111234718_DadosPerfil")]
+    partial class DadosPerfil
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -495,9 +498,6 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<string>("FaixaSalarial")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("IdPerfil")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Local")
                         .HasColumnType("text");
 
@@ -517,8 +517,6 @@ namespace EmpregaMaisAPI.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdPerfil");
 
                     b.ToTable("Vagas");
                 });
@@ -544,6 +542,9 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<Guid?>("IdPerfilPf")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("IdPerfilPj")
+                        .HasColumnType("uuid");
+
                     b.Property<Guid>("IdVaga")
                         .HasColumnType("uuid");
 
@@ -556,6 +557,8 @@ namespace EmpregaMaisAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IdPerfilPf");
+
+                    b.HasIndex("IdPerfilPj");
 
                     b.HasIndex("IdVaga");
 
@@ -675,20 +678,15 @@ namespace EmpregaMaisAPI.Migrations
                         .HasForeignKey("Infrastructure.Models.UsuarioModel", "IdPerfil");
                 });
 
-            modelBuilder.Entity("Infrastructure.Models.VagaModel", b =>
-                {
-                    b.HasOne("Infrastructure.Models.PerfilPjModel", null)
-                        .WithMany("Vagas")
-                        .HasForeignKey("IdPerfil")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Infrastructure.Models.VagaUsuarioModel", b =>
                 {
                     b.HasOne("Infrastructure.Models.PerfilPfModel", null)
                         .WithMany("VagasUsuarios")
                         .HasForeignKey("IdPerfilPf");
+
+                    b.HasOne("Infrastructure.Models.PerfilPjModel", null)
+                        .WithMany("VagasUsuarios")
+                        .HasForeignKey("IdPerfilPj");
 
                     b.HasOne("Infrastructure.Models.VagaModel", null)
                         .WithMany("VagasUsuarios")
@@ -726,7 +724,7 @@ namespace EmpregaMaisAPI.Migrations
                     b.Navigation("Usuario")
                         .IsRequired();
 
-                    b.Navigation("Vagas");
+                    b.Navigation("VagasUsuarios");
                 });
 
             modelBuilder.Entity("Infrastructure.Models.UsuarioModel", b =>

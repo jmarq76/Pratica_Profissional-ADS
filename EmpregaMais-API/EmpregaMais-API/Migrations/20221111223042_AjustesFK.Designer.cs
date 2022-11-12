@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmpregaMaisAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221111223042_AjustesFK")]
+    partial class AjustesFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,103 +142,6 @@ namespace EmpregaMaisAPI.Migrations
                     b.HasIndex("IdUsuario");
 
                     b.ToTable("Enderecos");
-                });
-
-            modelBuilder.Entity("Infrastructure.Models.HistoricoAcademicoModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<bool>("Cursando")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataConclusao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataInicio")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("IdPerfil")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("NivelEscolaridade")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("NomeCurso")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("NomeInstituicao")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UsuarioAlteracao")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UsuarioCriacao")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdPerfil");
-
-                    b.ToTable("HistoricosAcademicos");
-                });
-
-            modelBuilder.Entity("Infrastructure.Models.HistoricoProfissionalModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Cargo")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataEntrada")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DataSaida")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("DescricaoFuncoes")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("EmpresaAtual")
-                        .HasColumnType("boolean");
-
-                    b.Property<Guid>("IdPerfil")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("NomeEmpresa")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UsuarioAlteracao")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UsuarioCriacao")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdPerfil");
-
-                    b.ToTable("HistoricosProfissionais");
                 });
 
             modelBuilder.Entity("Infrastructure.Models.IdiomaModel", b =>
@@ -394,42 +300,6 @@ namespace EmpregaMaisAPI.Migrations
                     b.ToTable("PerfilPj");
                 });
 
-            modelBuilder.Entity("Infrastructure.Models.RedeSocialModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("IdPerfil")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Link")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UsuarioAlteracao")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UsuarioCriacao")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdPerfil");
-
-                    b.ToTable("RedesSociais");
-                });
-
             modelBuilder.Entity("Infrastructure.Models.UsuarioModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -495,9 +365,6 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<string>("FaixaSalarial")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("IdPerfil")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Local")
                         .HasColumnType("text");
 
@@ -517,8 +384,6 @@ namespace EmpregaMaisAPI.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdPerfil");
 
                     b.ToTable("Vagas");
                 });
@@ -544,6 +409,9 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<Guid?>("IdPerfilPf")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("IdPerfilPj")
+                        .HasColumnType("uuid");
+
                     b.Property<Guid>("IdVaga")
                         .HasColumnType("uuid");
 
@@ -556,6 +424,8 @@ namespace EmpregaMaisAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IdPerfilPf");
+
+                    b.HasIndex("IdPerfilPj");
 
                     b.HasIndex("IdVaga");
 
@@ -587,24 +457,6 @@ namespace EmpregaMaisAPI.Migrations
                     b.HasOne("Infrastructure.Models.UsuarioModel", null)
                         .WithMany("Enderecos")
                         .HasForeignKey("IdUsuario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Infrastructure.Models.HistoricoAcademicoModel", b =>
-                {
-                    b.HasOne("Infrastructure.Models.PerfilPfModel", null)
-                        .WithMany("HistoricosAcademicos")
-                        .HasForeignKey("IdPerfil")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Infrastructure.Models.HistoricoProfissionalModel", b =>
-                {
-                    b.HasOne("Infrastructure.Models.PerfilPfModel", null)
-                        .WithMany("HistoricosProfissionais")
-                        .HasForeignKey("IdPerfil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -643,21 +495,6 @@ namespace EmpregaMaisAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Infrastructure.Models.RedeSocialModel", b =>
-                {
-                    b.HasOne("Infrastructure.Models.PerfilPfModel", null)
-                        .WithMany("RedesSociais")
-                        .HasForeignKey("IdPerfil")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Infrastructure.Models.PerfilPjModel", null)
-                        .WithMany("RedesSociais")
-                        .HasForeignKey("IdPerfil")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Infrastructure.Models.UsuarioModel", b =>
                 {
                     b.HasOne("Infrastructure.Models.LoginModel", null)
@@ -675,20 +512,15 @@ namespace EmpregaMaisAPI.Migrations
                         .HasForeignKey("Infrastructure.Models.UsuarioModel", "IdPerfil");
                 });
 
-            modelBuilder.Entity("Infrastructure.Models.VagaModel", b =>
-                {
-                    b.HasOne("Infrastructure.Models.PerfilPjModel", null)
-                        .WithMany("Vagas")
-                        .HasForeignKey("IdPerfil")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Infrastructure.Models.VagaUsuarioModel", b =>
                 {
                     b.HasOne("Infrastructure.Models.PerfilPfModel", null)
                         .WithMany("VagasUsuarios")
                         .HasForeignKey("IdPerfilPf");
+
+                    b.HasOne("Infrastructure.Models.PerfilPjModel", null)
+                        .WithMany("VagasUsuarios")
+                        .HasForeignKey("IdPerfilPj");
 
                     b.HasOne("Infrastructure.Models.VagaModel", null)
                         .WithMany("VagasUsuarios")
@@ -705,12 +537,6 @@ namespace EmpregaMaisAPI.Migrations
 
             modelBuilder.Entity("Infrastructure.Models.PerfilPfModel", b =>
                 {
-                    b.Navigation("HistoricosAcademicos");
-
-                    b.Navigation("HistoricosProfissionais");
-
-                    b.Navigation("RedesSociais");
-
                     b.Navigation("Usuario")
                         .IsRequired();
 
@@ -721,12 +547,10 @@ namespace EmpregaMaisAPI.Migrations
                 {
                     b.Navigation("Denuncias");
 
-                    b.Navigation("RedesSociais");
-
                     b.Navigation("Usuario")
                         .IsRequired();
 
-                    b.Navigation("Vagas");
+                    b.Navigation("VagasUsuarios");
                 });
 
             modelBuilder.Entity("Infrastructure.Models.UsuarioModel", b =>
