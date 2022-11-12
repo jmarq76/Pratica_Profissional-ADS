@@ -1,4 +1,7 @@
-﻿using Infrastructure.Context;
+﻿using Application;
+using Domain;
+using Infrastructure;
+using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -17,6 +20,10 @@ builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
     options.UseNpgsql(
         configuration["ConnectionString"], 
         b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().ToString())));
+
+builder.Services.AddDomain();
+builder.Services.AddInfrastructure();
+builder.Services.AddApplication();
 
 var app = builder.Build();
 

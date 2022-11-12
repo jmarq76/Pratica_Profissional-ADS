@@ -8,7 +8,7 @@ namespace Infrastructure.Models
     [Table(ConstantesTabelas.ENDERECOS)]
     public class EnderecoModel : BaseModel
     {
-        public Guid IdUsuario { get; set; }
+        public Guid? IdUsuario { get; set; }
         public string? Logradouro { get; set; }
         public string? Complemento { get; set; }
         public string? Cep { get; set; }

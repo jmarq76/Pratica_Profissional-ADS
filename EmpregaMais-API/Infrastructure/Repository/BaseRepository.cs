@@ -32,6 +32,7 @@ namespace Infrastructure.Repository
 
         public void Inserir<TEntity>(TEntity entity) where TEntity : BaseModel
         {
+            entity.DataCriacao = DateTime.UtcNow;
             using var context = _contextFactory.CreateDbContext();
             context.Add(entity);
             context.SaveChanges();
