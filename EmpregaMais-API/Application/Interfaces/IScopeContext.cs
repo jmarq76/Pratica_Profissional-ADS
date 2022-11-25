@@ -2,6 +2,7 @@
 {
     public interface IScopeContext
     {
-        Guid? Id { get; set; }
+        Guid Id { get; set; }
+        Guid IdPerfil { get; set; }
     }
 }

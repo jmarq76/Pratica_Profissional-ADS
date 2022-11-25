@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.Requests;
 using Application.Utils;
+using AutoMapper;
 using Domain.Interfaces;
 using Infrastructure.Enums;
 using Infrastructure.Models;
@@ -16,6 +17,7 @@ namespace Application.Cadastros
         private readonly IEnderecoService _enderecoService;
         private readonly IPerfilPfService _perfilPfService;
         private readonly IPerfilPjService _perfilPjService;
+        private readonly IMapper _mapper;
 
         public CadastroUsuario(
             ILoginService loginService, 
@@ -23,7 +25,8 @@ namespace Application.Cadastros
             IContatoService contatoService, 
             IEnderecoService enderecoService, 
             IPerfilPfService perfilPfService, 
-            IPerfilPjService perfilPjService)
+            IPerfilPjService perfilPjService,
+            IMapper mapper)
         {
             _loginService = loginService;
             _usuarioService = usuarioService;
@@ -31,6 +34,7 @@ namespace Application.Cadastros
             _enderecoService = enderecoService;
             _perfilPfService = perfilPfService;
             _perfilPjService = perfilPjService;
+            _mapper = mapper;
         }
         public void RealizaCadastro(string json)
         {
@@ -38,15 +42,32 @@ namespace Application.Cadastros
             {
                 var dadosCadastro = JsonConvert.DeserializeObject<CadastroRequest>(json);
 
-                dadosCadastro.Login.Id = Guid.NewGuid();
-                dadosCadastro.Usuario.Id = Guid.NewGuid();
-                dadosCadastro.Usuario.IdLogin = dadosCadastro.Login.Id;
-                dadosCadastro.Login.IdUsuario = dadosCadastro.Usuario.Id;
+                var login = _mapper.Map<CadastroRequest, LoginModel>(dadosCadastro);
+                var usuario = _mapper.Map<CadastroRequest, UsuarioModel>(dadosCadastro);
+                var contatos = new List<ContatoModel>()
+                {
+                    new ContatoModel()
+                    {
+                        Descricao = dadosCadastro.Celular,
+                        TipoContato = TipoContato.Celular
+                    },
+                    new ContatoModel()
+                    {
+                        Descricao = dadosCadastro.Telefone,
+                        TipoContato = TipoContato.TelefoneFixo,
+                    }
+                };
+                var endereco = _mapper.Map<CadastroRequest, EnderecoModel>(dadosCadastro);
 
-                PreparaCadastroLogin(dadosCadastro.Login);
-                PrepararCadastroUsuario(dadosCadastro.Usuario);
-                PrepararCadastroContatos(dadosCadastro.Contatos, dadosCadastro.Usuario.Id);
-                PrepararCadastroEnderecos(dadosCadastro.Enderecos, dadosCadastro.Usuario.Id);
+                login.Id = Guid.NewGuid();
+                usuario.Id = Guid.NewGuid();
+                usuario.IdLogin = login.Id;
+                login.IdUsuario = usuario.Id;
+
+                PreparaCadastroLogin(login);
+                PrepararCadastroUsuario(usuario);
+                PrepararCadastroContatos(contatos, usuario.Id);
+                PrepararCadastroEnderecos(endereco, usuario.Id);
             }
             catch (Exception ex)
             {
@@ -55,13 +76,11 @@ namespace Application.Cadastros
             }
         }
 
-        private void PrepararCadastroEnderecos(List<EnderecoModel> enderecos, Guid usuarioId)
+        private void PrepararCadastroEnderecos(EnderecoModel endereco, Guid usuarioId)
         {
-            foreach(var endereco in enderecos)
-            {
                 endereco.IdUsuario = usuarioId;
                 _enderecoService.CadastraEndereco(endereco);
-            }
+
         }
 
         private void PrepararCadastroContatos(List<ContatoModel> contatos, Guid usuarioId)
@@ -98,9 +117,7 @@ namespace Application.Cadastros
         {
             try
             {
-                var userNameEncrypt = CryptoEngine.EncryptPlainTextToCypher(login.NomeUsuario, login.Password);
                 var passwordEncrypt = CryptoEngine.EncryptPlainTextToCypher(login.Password, login.NomeUsuario);
-                login.NomeUsuario = userNameEncrypt;
                 login.Password = passwordEncrypt;
 
                 _loginService.CadastrarLogin(login);
