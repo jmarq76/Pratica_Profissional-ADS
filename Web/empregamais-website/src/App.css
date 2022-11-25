@@ -1,0 +1,204 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  display: block;
+}
+
+.div-main-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.links-main-navigation{
+  display: flex;
+  justify-content: space-between;
+}
+
+.links-main-navigation p{
+  margin: auto 1em auto 1em;
+}
+
+.buttons-main-navigation{
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-main-navigation a{
+  margin: auto 0.5em auto 0.5em;
+  height: 50%;
+  border-radius: 10px;
+  border-color: aliceblue;
+  background-color: cornflowerblue;
+}
+
+.sec-main-section{
+  display: block;
+}
+
+.form-main-section{
+  display: block;
+  height: 2.5em;
+}
+
+.input-main-section{
+  width: 40%;
+  height: 80%;
+  margin-right: 0.5em;
+  border-radius: 5px;
+  border-color: aliceblue
+}
+
+.btn-main-section{
+  height: 95%;
+  border-radius: 5px;
+  border-color: aliceblue;
+}
+
+.card {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  width: 750px;
+  border-radius: 5px;
+  padding: 1em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: auto;
+  margin-bottom: 1.5em;
+}
+
+.item-container {
+  display: block;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.vaga-titulo{
+  text-align: left;
+  margin-bottom: 0.2em;
+  font-size: large;
+  font-weight: bold;
+}
+
+.usuario-nome{
+  text-align: left;
+  font-size: 14px;
+  margin-top: 0.1em;
+  margin-bottom: 0.2em;
+}
+
+.vaga-senioridade{
+  text-align: left;
+  font-size: 12px;
+  margin-top: 0.1em;
+}
+
+.vaga-descricao{
+  text-align: left;
+}
+
+.local-data{
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.cadastro-usuario-main-div{
+  display: block;
+  margin: auto;
+  max-width: 1100px;
+  padding-bottom: 3em;
+  padding-top: 2em;
+}
+
+.cadastro-usuario-card-div{
+  display: block;
+  margin: auto;
+  border-color: black;
+  border-style: solid;
+  border-width: 3px;
+  max-width: 750px;
+}
+
+.cadastro-usuario-login{
+  display: block;
+  margin: auto;
+}
+
+.cadastro-usuario-form{
+  display: block;
+  margin: auto;
+  max-width: 50%;
+  align-items: left;
+}
+.cadastro-usuario-lbl{
+  display: block;
+  margin: auto;	
+  text-align: left;
+}
+
+.cadastro-usuario-inpt{
+  display: block;
+  width: 100%;
+  height: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  background-color: beige;
+}
+
+.login-div-card{
+  max-width: 1100px;
+  margin: auto;
+  padding-top: 3em;
+  padding-bottom: 3em;;
+  height: 250px;
+}
+
+.login-form-card{
+  max-width: 40%;
+  margin: auto;
+  height: 95%;
+}
+
+.login-lbl-card{
+  display: block;
+  text-align: center;
+}
+
+.login-in-card{
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  height: 2em;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  background-color: beige;
+}
+
+.login-btn-card{
+  display: block;
+  margin: auto;
+  margin-top: 1.5em;
+  width: 25%;
+  height: 15%;
+}
+
+.perfil-main-div{
+  width: auto;
+  max-width: 1500px;
+  margin: auto;
+  height: 350px;
+}
+
+.perfil-dados-div{
+  width: auto;
+  max-width: 1300px;
+  margin: auto;
+  height: 350px;
+}
