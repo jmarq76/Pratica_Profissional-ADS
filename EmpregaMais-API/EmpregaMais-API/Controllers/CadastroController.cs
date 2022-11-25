@@ -5,6 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace EmpregaMais_API.Controllers
 {
+    [ApiController]
     public class CadastroController : Controller
     {
         private readonly ICadastroUsuario _cadastroUsuario;
@@ -19,9 +20,32 @@ namespace EmpregaMais_API.Controllers
         }
         [Route("/cadastro/usuario")]
         [HttpPost]
-        public void CadastroUsuario([FromBody] JsonObject dados)
+        public IActionResult CadastroUsuario([FromBody] JsonObject dados)
         {
-            _cadastroUsuario.RealizaCadastro(dados.ToString());
+            try
+            {
+                _cadastroUsuario.RealizaCadastro(dados.ToString());
+                return new OkResult();
+            }
+            catch
+            {
+                return new BadRequestResult();
+            }
+        }
+
+        [Route("/cadastro/empresa")]
+        [HttpPost]
+        public IActionResult CadastroEmpresa([FromBody] JsonObject dados)
+        {
+            try
+            {
+                _cadastroUsuario.RealizaCadastro(dados.ToString());
+                return new OkResult();
+            }
+            catch
+            {
+                return new BadRequestResult();
+            }
         }
 
         [Route("/cadastro/vaga")]
