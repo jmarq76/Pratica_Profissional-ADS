@@ -44,6 +44,12 @@ namespace Infrastructure.Repository
             return context.Set<TEntity>().ToList();
         }
 
+        public IEnumerable<TEntity> ListarTodosPorChave<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : BaseModel
+        {
+            using var context = _contextFactory.CreateDbContext();
+            return context.Set<TEntity>().Where(predicate).ToList();
+        }
+
         public TEntity Obter<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : BaseModel
         {
             using var context = _contextFactory.CreateDbContext();

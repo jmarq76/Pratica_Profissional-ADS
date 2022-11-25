@@ -17,7 +17,7 @@ namespace Infrastructure.Models
         [NotMapped]
         public List<ContatoModel> Contatos { get; set; }
         [NotMapped]
-        public List<EnderecoModel> Enderecos { get; set; }
+        public EnderecoModel Enderecos { get; set; }
         [NotMapped]
         public LoginModel Login { get; set; }
         [NotMapped]

@@ -10,5 +10,6 @@ namespace Infrastructure.Interfaces
         TEntity Obter<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : BaseModel;
         void Atualizar<TEntity>(TEntity entity) where TEntity : BaseModel;
         void Deletar<TEntity>(TEntity entity) where TEntity : BaseModel;
+        IEnumerable<TEntity> ListarTodosPorChave<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : BaseModel;
     }
 }

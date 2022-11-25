@@ -17,6 +17,7 @@ namespace Infrastructure.Models
         public string? Local { get; set; }
         public Beneficios Beneficios { get; set; }
         public string? OutrosRequisitos { get; set; }
+        public bool VagaAtiva { get; set; }
 
         [NotMapped]
         public List<DenunciaModel> Denuncias { get; set; }
