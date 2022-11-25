@@ -14,6 +14,8 @@ namespace Domain
             services.AddScoped<IEnderecoService, EnderecoService>();
             services.AddScoped<IPerfilPfService, PerfilPfService>();
             services.AddScoped<IPerfilPjService, PerfilPjService>();
+            services.AddScoped<IVagaService, VagaService>();
+            services.AddScoped<IDenunciaService, DenunciaService>();
 
             return services;
         }

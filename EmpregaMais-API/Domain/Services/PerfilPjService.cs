@@ -1,13 +1,21 @@
 ﻿using Domain.Interfaces;
+using Infrastructure.Interfaces;
 using Infrastructure.Models;
 
 namespace Domain.Services
 {
     public class PerfilPjService : IPerfilPjService
     {
+        private readonly IRepository _repository;
+
+        public PerfilPjService(IRepository repository)
+        {
+            _repository = repository;
+        }
+
         public void CadastrarPerfilPj(PerfilPjModel perfilPj)
         {
-            throw new NotImplementedException();
+            _repository.Inserir(perfilPj);
         }
 
         public void DeletarPerfilPj(Guid id)
@@ -15,9 +23,9 @@ namespace Domain.Services
             throw new NotImplementedException();
         }
 
-        public void ObtemPerfilPj(Guid id)
+        public PerfilPjModel ObtemPerfilPj(Guid id)
         {
-            throw new NotImplementedException();
+            return _repository.Obter<PerfilPjModel>(pj => pj.Id == id);
         }
     }
 }

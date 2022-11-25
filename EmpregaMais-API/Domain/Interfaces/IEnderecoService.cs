@@ -5,7 +5,7 @@ namespace Domain.Interfaces
     public interface IEnderecoService
     {
         void CadastraEndereco(EnderecoModel endereco);
-        void ObtemEndereco(Guid id);
+        EnderecoModel ObtemEndereco(Guid id);
         void DeletarEndereco(Guid id);
     }
 }

@@ -1,13 +1,21 @@
 ﻿using Domain.Interfaces;
+using Infrastructure.Interfaces;
 using Infrastructure.Models;
 
 namespace Domain.Services
 {
     public class EnderecoService : IEnderecoService
     {
+        private readonly IRepository _repository;
+
+        public EnderecoService(IRepository repository)
+        {
+            _repository = repository;
+        }
+
         public void CadastraEndereco(EnderecoModel endereco)
         {
-            throw new NotImplementedException();
+            _repository.Inserir(endereco);
         }
 
         public void DeletarEndereco(Guid id)
@@ -15,9 +23,9 @@ namespace Domain.Services
             throw new NotImplementedException();
         }
 
-        public void ObtemEndereco(Guid id)
+        public EnderecoModel ObtemEndereco(Guid id)
         {
-            throw new NotImplementedException();
+            return _repository.Obter<EnderecoModel>(e => e.IdUsuario == id);
         }
     }
 }

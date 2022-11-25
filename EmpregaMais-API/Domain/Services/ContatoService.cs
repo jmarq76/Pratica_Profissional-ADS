@@ -1,13 +1,21 @@
 ﻿using Domain.Interfaces;
+using Infrastructure.Interfaces;
 using Infrastructure.Models;
 
 namespace Domain.Services
 {
     public class ContatoService : IContatoService
     {
+        private readonly IRepository _repository;
+
+        public ContatoService(IRepository repository)
+        {
+            _repository = repository;
+        }
+
         public void CadastraContato(ContatoModel contato)
         {
-            throw new NotImplementedException();
+            _repository.Inserir(contato);
         }
 
         public void DeletaContato(Guid id)
@@ -15,9 +23,9 @@ namespace Domain.Services
             throw new NotImplementedException();
         }
 
-        public void ObtemContato(Guid id)
+        public IEnumerable<ContatoModel> ObtemContato(Guid id)
         {
-            throw new NotImplementedException();
+            return _repository.ListarTodosPorChave<ContatoModel>(c => c.IdUsuario == id);
         }
     }
 }

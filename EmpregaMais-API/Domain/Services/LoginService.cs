@@ -17,31 +17,14 @@ namespace Domain.Services
             return true;
         }
 
-        public bool FazerLogin(string userName, string password)
+        public LoginModel ObterLogin(string userName)
         {
-            try
-            {
-                //var userNameEncrypt = CryptoEngine.EncryptPlainTextToCypher(userName, password);
-                //var passwordEncrypt = CryptoEngine.EncryptPlainTextToCypher(password, userName);
+            return _repository.Obter<LoginModel>(l => l.NomeUsuario == userName);
+        }
 
-                //var loginDb = _repository.Obter<LoginModel>(l => l.NomeUsuario == userNameEncrypt);
-
-                //if(loginDb != null && loginDb.Password.Equals(passwordEncrypt))
-                //{
-                //    Console.WriteLine("Login efetuado com sucesso");
-                //    return true;
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Username/Senha errados");
-                //    return false;
-                //}
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+        public LoginModel ObterPorId(Guid id)
+        {
+            return _repository.Obter<LoginModel>(l => l.IdUsuario == id);
         }
 
         public void FazerLogout()

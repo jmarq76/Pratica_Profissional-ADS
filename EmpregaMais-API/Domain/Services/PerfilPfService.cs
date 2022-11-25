@@ -23,9 +23,10 @@ namespace Domain.Services
             throw new NotImplementedException();
         }
 
-        public void ObtemPerfilPf(Guid id)
+        public PerfilPfModel ObtemPerfilPf(Guid idUsuario)
         {
-            throw new NotImplementedException();
+            var perfil = _repository.Obter<PerfilPfModel>(pf => pf.IdUsuario == idUsuario);
+            return perfil;
         }
     }
 }

@@ -5,7 +5,8 @@ namespace Domain.Interfaces
     public interface ILoginService
     {
         bool CadastrarLogin(LoginModel dadosLogin);
-        bool FazerLogin(string userName, string password);
+        LoginModel ObterLogin(string userName);
+        LoginModel ObterPorId(Guid id);
         void FazerLogout();
     }
 }

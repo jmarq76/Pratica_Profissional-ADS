@@ -23,9 +23,29 @@ namespace Domain.Services
             throw new NotImplementedException();
         }
 
-        public void ObtemVaga(Guid id)
+        public IEnumerable<VagaModel> ObtemVaga(string textoBusca)
         {
-            throw new NotImplementedException();
+            return _repository.ListarTodosPorChave<VagaModel>(v => v.Descricao.Contains(textoBusca) && v.VagaAtiva == true).OrderByDescending(v => v.DataCriacao);
+        }
+
+        public VagaModel ObtemVagaPorId(string textoBusca)
+        {
+            return _repository.Obter<VagaModel>(v => v.Id == Guid.Parse(textoBusca));
+        }
+
+        public IEnumerable<VagaModel> ListarVagasPorIdPerfil(Guid idPerfil)
+        {
+            return _repository.ListarTodosPorChave<VagaModel>(v => v.IdPerfil == idPerfil);
+        }
+
+        public IEnumerable<VagaModel> ListarVagasAtivas(Guid idPerfil)
+        {
+            return _repository.ListarTodosPorChave<VagaModel>(v => v.IdPerfil == idPerfil).Where(v => v.VagaAtiva == true);
+        }
+
+        public void AtualizaVaga(VagaModel vaga)
+        {
+            _repository.Atualizar(vaga);
         }
     }
 }

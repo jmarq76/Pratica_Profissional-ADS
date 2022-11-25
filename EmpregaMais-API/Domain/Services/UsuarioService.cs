@@ -1,6 +1,7 @@
 ﻿using Domain.Interfaces;
 using Infrastructure.Interfaces;
 using Infrastructure.Models;
+using System.Linq.Expressions;
 
 namespace Domain.Services
 {
@@ -23,9 +24,9 @@ namespace Domain.Services
             throw new NotImplementedException();
         }
 
-        public void ObtemUsuario(Guid id)
+        public UsuarioModel ObtemUsuario(Expression<Func<UsuarioModel, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return _repository.Obter(predicate);
         }
     }
 }

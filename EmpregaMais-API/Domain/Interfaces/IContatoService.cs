@@ -5,7 +5,7 @@ namespace Domain.Interfaces
     public interface IContatoService
     {
         void CadastraContato(ContatoModel contato);
-        void ObtemContato(Guid id);
+        IEnumerable<ContatoModel> ObtemContato(Guid id);
         void DeletaContato(Guid id);
     }
 }
