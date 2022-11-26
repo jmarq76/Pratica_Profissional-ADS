@@ -1,5 +1,6 @@
 ﻿using Infrastructure.BaseClasses;
 using Infrastructure.Constantes;
+using Infrastructure.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Models
@@ -7,15 +8,16 @@ namespace Infrastructure.Models
     [Table(ConstantesTabelas.USUARIOS)]
     public class UsuarioModel : BaseModel
     {
-        public Guid IdPerfil { get; set; }
-        public Guid IdLogin { get; set; }
+        public Guid? IdPerfil { get; set; }
+        public Guid? IdLogin { get; set; }
         public string? Nome { get; set; }
         public string? CpfCnpj { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }
 
         [NotMapped]
-        public List<ContatoModel>? Contatos { get; set; }
+        public List<ContatoModel> Contatos { get; set; }
         [NotMapped]
-        public List<EnderecoModel>? Enderecos { get; set; }
+        public EnderecoModel Enderecos { get; set; }
         [NotMapped]
         public LoginModel Login { get; set; }
         [NotMapped]

@@ -10,8 +10,8 @@ namespace Infrastructure.Context.EntityConfiguration
         {
             builder
                 .HasOne<UsuarioModel>()
-                .WithMany(u => u.Enderecos)
-                .HasForeignKey(e => e.IdUsuario);
+                .WithOne(u => u.Enderecos)
+                .HasForeignKey<EnderecoModel>(e => e.IdUsuario);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Infrastructure.Models
     [Table(ConstantesTabelas.CONTATOS)]
     public class ContatoModel : BaseModel
     {
-        public Guid IdUsuario { get; set; }
+        public Guid? IdUsuario { get; set; }
         public string? Descricao { get; set; }
         public TipoContato TipoContato { get; set; }
 

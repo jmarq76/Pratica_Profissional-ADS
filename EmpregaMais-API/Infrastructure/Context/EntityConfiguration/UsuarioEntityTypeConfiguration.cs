@@ -16,12 +16,14 @@ namespace Infrastructure.Context.EntityConfiguration
             builder
                 .HasOne<PerfilPfModel>()
                 .WithOne(pf => pf.Usuario)
-                .HasForeignKey<UsuarioModel>(u => u.IdPerfil);
+                .HasForeignKey<UsuarioModel>(u => u.IdPerfil)
+                .IsRequired(false);
 
             builder
                 .HasOne<PerfilPjModel>()
                 .WithOne(pj => pj.Usuario)
-                .HasForeignKey<UsuarioModel>(u => u.IdPerfil);
+                .HasForeignKey<UsuarioModel>(u => u.IdPerfil)
+                .IsRequired(false);
         }
     }
 }

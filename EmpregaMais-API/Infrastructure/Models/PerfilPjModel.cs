@@ -13,10 +13,12 @@ namespace Infrastructure.Models
         public int TempoMedioResposta { get; set; }
 
         [NotMapped]
-        public List<DenunciaModel> Denuncias { get; set; }
+        public IEnumerable<DenunciaModel> Denuncias { get; set; }
         [NotMapped]
         public UsuarioModel Usuario { get; set; }
         [NotMapped]
-        public List<VagaUsuarioModel> VagasUsuarios { get; set; }
+        public IEnumerable<RedeSocialModel> RedesSociais { get; set; }
+        [NotMapped]
+        public IEnumerable<VagaModel> Vagas { get; set; }
     }
 }

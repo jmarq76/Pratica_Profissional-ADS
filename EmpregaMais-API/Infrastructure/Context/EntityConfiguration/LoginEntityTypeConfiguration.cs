@@ -11,7 +11,8 @@ namespace Infrastructure.Context.EntityConfiguration
             builder
                 .HasOne<UsuarioModel>()
                 .WithOne(u => u.Login)
-                .HasForeignKey<LoginModel>(l => l.IdUsuario);
+                .HasForeignKey<LoginModel>(l => l.IdUsuario)
+                .IsRequired(false);
         }
     }
 }

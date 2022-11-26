@@ -8,6 +8,7 @@ namespace Infrastructure.Models
     [Table(ConstantesTabelas.VAGAS)]
     public class VagaModel : BaseModel
     {
+        public Guid IdPerfil { get; set; }
         public string? Titulo { get; set; }
         public string? Descricao { get; set; }
         public DateTime DataExpiracao { get; set; }
@@ -16,6 +17,7 @@ namespace Infrastructure.Models
         public string? Local { get; set; }
         public Beneficios Beneficios { get; set; }
         public string? OutrosRequisitos { get; set; }
+        public bool VagaAtiva { get; set; }
 
         [NotMapped]
         public List<DenunciaModel> Denuncias { get; set; }
@@ -23,5 +25,7 @@ namespace Infrastructure.Models
         public List<IdiomaModel> Idiomas { get; set; }
         [NotMapped]
         public List<VagaUsuarioModel> VagasUsuarios { get; set; }
+        [NotMapped]
+        public PerfilPjModel PerfilPj { get; set; }
     }
 }

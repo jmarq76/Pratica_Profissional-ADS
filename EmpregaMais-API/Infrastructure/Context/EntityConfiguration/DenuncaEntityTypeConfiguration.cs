@@ -11,12 +11,14 @@ namespace Infrastructure.Context.EntityConfiguration
             builder
                 .HasOne<VagaModel>()
                 .WithMany(v => v.Denuncias)
-                .HasForeignKey(d => d.IdVaga);
+                .HasForeignKey(d => d.IdVaga)
+                .IsRequired(false);
 
             builder
                 .HasOne<PerfilPjModel>()
                 .WithMany(pj => pj.Denuncias)
-                .HasForeignKey(d => d.IdPerfilPj);
+                .HasForeignKey(d => d.IdPerfilPj)
+                .IsRequired(false);
         }
     }
 }

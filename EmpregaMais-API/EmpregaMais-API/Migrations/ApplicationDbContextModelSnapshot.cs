@@ -37,7 +37,7 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("IdUsuario")
+                    b.Property<Guid?>("IdUsuario")
                         .HasColumnType("uuid");
 
                     b.Property<int>("TipoContato")
@@ -71,10 +71,10 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("IdPerfilPj")
+                    b.Property<Guid?>("IdPerfilPj")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("IdVaga")
+                    b.Property<Guid?>("IdVaga")
                         .HasColumnType("uuid");
 
                     b.Property<int>("TipoDencuncia")
@@ -113,7 +113,7 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("IdUsuario")
+                    b.Property<Guid?>("IdUsuario")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Logradouro")
@@ -136,9 +136,107 @@ namespace EmpregaMaisAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdUsuario");
+                    b.HasIndex("IdUsuario")
+                        .IsUnique();
 
                     b.ToTable("Enderecos");
+                });
+
+            modelBuilder.Entity("Infrastructure.Models.HistoricoAcademicoModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("Cursando")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("DataAlteracao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataConclusao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataInicio")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("IdPerfil")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("NivelEscolaridade")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("NomeCurso")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("NomeInstituicao")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UsuarioAlteracao")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UsuarioCriacao")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdPerfil");
+
+                    b.ToTable("HistoricosAcademicos");
+                });
+
+            modelBuilder.Entity("Infrastructure.Models.HistoricoProfissionalModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Cargo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DataAlteracao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataEntrada")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DataSaida")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DescricaoFuncoes")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("EmpresaAtual")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("IdPerfil")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("NomeEmpresa")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UsuarioAlteracao")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UsuarioCriacao")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdPerfil");
+
+                    b.ToTable("HistoricosProfissionais");
                 });
 
             modelBuilder.Entity("Infrastructure.Models.IdiomaModel", b =>
@@ -187,13 +285,15 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("IdUsuario")
+                    b.Property<Guid?>("IdUsuario")
                         .HasColumnType("uuid");
 
                     b.Property<string>("NomeUsuario")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("UsuarioAlteracao")
@@ -295,6 +395,42 @@ namespace EmpregaMaisAPI.Migrations
                     b.ToTable("PerfilPj");
                 });
 
+            modelBuilder.Entity("Infrastructure.Models.RedeSocialModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("DataAlteracao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("IdPerfil")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Link")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UsuarioAlteracao")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UsuarioCriacao")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdPerfil");
+
+                    b.ToTable("RedesSociais");
+                });
+
             modelBuilder.Entity("Infrastructure.Models.UsuarioModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -310,14 +446,17 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("IdLogin")
+                    b.Property<Guid?>("IdLogin")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("IdPerfil")
+                    b.Property<Guid?>("IdPerfil")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Nome")
                         .HasColumnType("text");
+
+                    b.Property<int>("TipoUsuario")
+                        .HasColumnType("integer");
 
                     b.Property<string>("UsuarioAlteracao")
                         .HasColumnType("text");
@@ -360,6 +499,9 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<string>("FaixaSalarial")
                         .HasColumnType("text");
 
+                    b.Property<Guid>("IdPerfil")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Local")
                         .HasColumnType("text");
 
@@ -378,7 +520,12 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<string>("UsuarioCriacao")
                         .HasColumnType("text");
 
+                    b.Property<bool>("VagaAtiva")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("IdPerfil");
 
                     b.ToTable("Vagas");
                 });
@@ -401,10 +548,7 @@ namespace EmpregaMaisAPI.Migrations
                     b.Property<DateTime>("DataRespostaPerfilPj")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("IdPerfilPf")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("IdPerfilPj")
+                    b.Property<Guid?>("IdPerfilPf")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("IdVaga")
@@ -420,8 +564,6 @@ namespace EmpregaMaisAPI.Migrations
 
                     b.HasIndex("IdPerfilPf");
 
-                    b.HasIndex("IdPerfilPj");
-
                     b.HasIndex("IdVaga");
 
                     b.ToTable("VagasUsuarios");
@@ -431,31 +573,41 @@ namespace EmpregaMaisAPI.Migrations
                 {
                     b.HasOne("Infrastructure.Models.UsuarioModel", null)
                         .WithMany("Contatos")
-                        .HasForeignKey("IdUsuario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdUsuario");
                 });
 
             modelBuilder.Entity("Infrastructure.Models.DenunciaModel", b =>
                 {
                     b.HasOne("Infrastructure.Models.PerfilPjModel", null)
                         .WithMany("Denuncias")
-                        .HasForeignKey("IdPerfilPj")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdPerfilPj");
 
                     b.HasOne("Infrastructure.Models.VagaModel", null)
                         .WithMany("Denuncias")
-                        .HasForeignKey("IdVaga")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdVaga");
                 });
 
             modelBuilder.Entity("Infrastructure.Models.EnderecoModel", b =>
                 {
                     b.HasOne("Infrastructure.Models.UsuarioModel", null)
-                        .WithMany("Enderecos")
-                        .HasForeignKey("IdUsuario")
+                        .WithOne("Enderecos")
+                        .HasForeignKey("Infrastructure.Models.EnderecoModel", "IdUsuario");
+                });
+
+            modelBuilder.Entity("Infrastructure.Models.HistoricoAcademicoModel", b =>
+                {
+                    b.HasOne("Infrastructure.Models.PerfilPfModel", null)
+                        .WithMany("HistoricosAcademicos")
+                        .HasForeignKey("IdPerfil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Infrastructure.Models.HistoricoProfissionalModel", b =>
+                {
+                    b.HasOne("Infrastructure.Models.PerfilPfModel", null)
+                        .WithMany("HistoricosProfissionais")
+                        .HasForeignKey("IdPerfil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -473,9 +625,7 @@ namespace EmpregaMaisAPI.Migrations
                 {
                     b.HasOne("Infrastructure.Models.UsuarioModel", null)
                         .WithOne("Login")
-                        .HasForeignKey("Infrastructure.Models.LoginModel", "IdUsuario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Infrastructure.Models.LoginModel", "IdUsuario");
                 });
 
             modelBuilder.Entity("Infrastructure.Models.PerfilPfModel", b =>
@@ -496,23 +646,41 @@ namespace EmpregaMaisAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Infrastructure.Models.UsuarioModel", b =>
+            modelBuilder.Entity("Infrastructure.Models.RedeSocialModel", b =>
                 {
-                    b.HasOne("Infrastructure.Models.LoginModel", null)
-                        .WithOne("Usuario")
-                        .HasForeignKey("Infrastructure.Models.UsuarioModel", "IdLogin")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Infrastructure.Models.PerfilPfModel", null)
-                        .WithOne("Usuario")
-                        .HasForeignKey("Infrastructure.Models.UsuarioModel", "IdPerfil")
+                        .WithMany("RedesSociais")
+                        .HasForeignKey("IdPerfil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Infrastructure.Models.PerfilPjModel", null)
+                        .WithMany("RedesSociais")
+                        .HasForeignKey("IdPerfil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Infrastructure.Models.UsuarioModel", b =>
+                {
+                    b.HasOne("Infrastructure.Models.LoginModel", null)
                         .WithOne("Usuario")
-                        .HasForeignKey("Infrastructure.Models.UsuarioModel", "IdPerfil")
+                        .HasForeignKey("Infrastructure.Models.UsuarioModel", "IdLogin");
+
+                    b.HasOne("Infrastructure.Models.PerfilPfModel", null)
+                        .WithOne("Usuario")
+                        .HasForeignKey("Infrastructure.Models.UsuarioModel", "IdPerfil");
+
+                    b.HasOne("Infrastructure.Models.PerfilPjModel", null)
+                        .WithOne("Usuario")
+                        .HasForeignKey("Infrastructure.Models.UsuarioModel", "IdPerfil");
+                });
+
+            modelBuilder.Entity("Infrastructure.Models.VagaModel", b =>
+                {
+                    b.HasOne("Infrastructure.Models.PerfilPjModel", null)
+                        .WithMany("Vagas")
+                        .HasForeignKey("IdPerfil")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -521,15 +689,7 @@ namespace EmpregaMaisAPI.Migrations
                 {
                     b.HasOne("Infrastructure.Models.PerfilPfModel", null)
                         .WithMany("VagasUsuarios")
-                        .HasForeignKey("IdPerfilPf")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Infrastructure.Models.PerfilPjModel", null)
-                        .WithMany("VagasUsuarios")
-                        .HasForeignKey("IdPerfilPj")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdPerfilPf");
 
                     b.HasOne("Infrastructure.Models.VagaModel", null)
                         .WithMany("VagasUsuarios")
@@ -546,6 +706,12 @@ namespace EmpregaMaisAPI.Migrations
 
             modelBuilder.Entity("Infrastructure.Models.PerfilPfModel", b =>
                 {
+                    b.Navigation("HistoricosAcademicos");
+
+                    b.Navigation("HistoricosProfissionais");
+
+                    b.Navigation("RedesSociais");
+
                     b.Navigation("Usuario")
                         .IsRequired();
 
@@ -556,17 +722,20 @@ namespace EmpregaMaisAPI.Migrations
                 {
                     b.Navigation("Denuncias");
 
+                    b.Navigation("RedesSociais");
+
                     b.Navigation("Usuario")
                         .IsRequired();
 
-                    b.Navigation("VagasUsuarios");
+                    b.Navigation("Vagas");
                 });
 
             modelBuilder.Entity("Infrastructure.Models.UsuarioModel", b =>
                 {
                     b.Navigation("Contatos");
 
-                    b.Navigation("Enderecos");
+                    b.Navigation("Enderecos")
+                        .IsRequired();
 
                     b.Navigation("Login")
                         .IsRequired();

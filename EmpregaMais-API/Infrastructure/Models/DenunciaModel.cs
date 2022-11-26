@@ -8,8 +8,8 @@ namespace Infrastructure.Models
     [Table(ConstantesTabelas.DENUNCIAS)]
     public class DenunciaModel : BaseModel
     {
-        public Guid IdVaga { get; set; }
-        public Guid IdPerfilPj { get; set; }
+        public Guid? IdVaga { get; set; }
+        public Guid? IdPerfilPj { get; set; }
         public string? Descricao { get; set; }
         public TipoDenuncia TipoDencuncia { get; set; }
 

@@ -16,12 +16,8 @@ namespace Infrastructure.Context.EntityConfiguration
             builder
                 .HasOne<PerfilPfModel>()
                 .WithMany(pf => pf.VagasUsuarios)
-                .HasForeignKey(vu => vu.IdPerfilPf);
-
-            builder
-                .HasOne<PerfilPjModel>()
-                .WithMany(pj => pj.VagasUsuarios)
-                .HasForeignKey(vu => vu.IdPerfilPj);
+                .HasForeignKey(vu => vu.IdPerfilPf)
+                .IsRequired(false);
         }
     }
 }
