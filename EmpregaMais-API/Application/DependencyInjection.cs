@@ -1,9 +1,10 @@
 ﻿using Application.Cadastros;
+using Application.Handlers;
 using Application.Interfaces;
-using Application.Listagens;
 using Application.LoginHandler;
-using Application.PerfilPf;
 using Application.Utils;
+using Domain.Interfaces;
+using Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -16,9 +17,12 @@ namespace Application
             services.AddScoped<ICadastroUsuario, CadastroUsuario>();
             services.AddScoped<ICadastroVaga, CadastroVaga>();
             services.AddScoped<ICadastroDenuncia, CadastroDenuncia>();
-            services.AddScoped<IListagemVagas, ListagensVagas>();
+            services.AddScoped<IVagasHandler, VagasHandler>();
             services.AddScoped<ILogin, Login>();
             services.AddScoped<IPerfilPfHandler, PerfilPfHandler>();
+            services.AddScoped<IHistoricoAcademicoHandler, HistoricoAcademicoHandler>();
+            services.AddScoped<IHistoricoProfissionalHandler, HistoricoProfissionalHandler>();
+            services.AddScoped<IVagaUsuarioService, VagaUsuarioService>();
             services.AddSingleton<IScopeContext, ScopeContext>();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
