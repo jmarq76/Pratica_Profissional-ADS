@@ -25,7 +25,7 @@ namespace Domain.Services
 
         public IEnumerable<VagaModel> ObtemVaga(string textoBusca)
         {
-            return _repository.ListarTodosPorChave<VagaModel>(v => v.Descricao.Contains(textoBusca) && v.VagaAtiva == true).OrderByDescending(v => v.DataCriacao);
+            return _repository.ListarTodosPorChave<VagaModel>(v => v.Titulo.Contains(textoBusca) || v.Descricao.Contains(textoBusca) && v.VagaAtiva == true).OrderByDescending(v => v.DataCriacao);
         }
 
         public VagaModel ObtemVagaPorId(string textoBusca)

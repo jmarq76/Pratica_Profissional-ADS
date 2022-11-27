@@ -7,5 +7,6 @@ namespace Domain.Interfaces
         void CadastraPerfilPf(PerfilPfModel perfilPf);
         PerfilPfModel ObtemPerfilPf(Guid id);
         void DeletaPerfilPf(Guid id);
+        void AtualizaPerfilPf(PerfilPfModel perfilPf);
     }
 }

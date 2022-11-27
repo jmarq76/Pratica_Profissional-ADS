@@ -1,13 +1,26 @@
 ﻿using Domain.Interfaces;
+using Infrastructure.Interfaces;
 using Infrastructure.Models;
 
 namespace Domain.Services
 {
     public class HistoricoAcademicoService : IHistoricoAcademicoService
     {
+        private readonly IRepository _repository;
+        public HistoricoAcademicoService(IRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public void AtualizarHistoricoAcademico(HistoricoAcademicoModel historicoAcademico)
+        {
+            historicoAcademico.Id = _repository.Obter<HistoricoAcademicoModel>(hist => hist.IdPerfil == historicoAcademico.IdPerfil).Id;
+            _repository.Atualizar(historicoAcademico);
+        }
+
         public void CadastrarHistoricoAcademico(HistoricoAcademicoModel historicoAcademico)
         {
-            throw new NotImplementedException();
+            _repository.Inserir(historicoAcademico);
         }
 
         public void DeletarHistoricoAcademico(Guid id)
@@ -15,9 +28,9 @@ namespace Domain.Services
             throw new NotImplementedException();
         }
 
-        public void ObtemHistoricoAcadamento(Guid id)
+        public IEnumerable<HistoricoAcademicoModel> ObtemHistoricosAcademicos(Guid idPerfil)
         {
-            throw new NotImplementedException();
+            return _repository.ListarTodosPorChave<HistoricoAcademicoModel>(hist => hist.IdPerfil == idPerfil);
         }
     }
 }
