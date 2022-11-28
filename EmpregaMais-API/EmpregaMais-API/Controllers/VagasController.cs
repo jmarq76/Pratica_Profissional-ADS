@@ -10,25 +10,25 @@ namespace EmpregaMais_API.Controllers
     [ApiController]
     public class VagasController : Controller
     {
-        private readonly IListagemVagas _listagemVagas;
+        private readonly IVagasHandler _vagasHandler;
 
-        public VagasController(IListagemVagas listagemVagas)
+        public VagasController(IVagasHandler vagasHandler)
         {
-            _listagemVagas = listagemVagas;
+            _vagasHandler = vagasHandler;
         }
 
         [Route("/vagas/busca")]
         [HttpGet]
-        public string BuscaVagas([FromQuery]string textoBusca)
+        public string BuscaVagas([FromQuery] string textoBusca)
         {
-            return _listagemVagas.OBtemVagasPorChave(textoBusca);
+            return _vagasHandler.OBtemVagasPorChave(textoBusca);
         }
 
         [Route("/vagas/buscaVaga")]
         [HttpGet]
         public string BuscaVaga([FromQuery] string textoBusca)
         {
-            return _listagemVagas.ObtemVagaPorChave(textoBusca);
+            return _vagasHandler.ObtemVagaPorChave(textoBusca);
         }
 
         [Route("/vagas/listaVagasEmpresa")]
@@ -36,7 +36,7 @@ namespace EmpregaMais_API.Controllers
         [HttpGet]
         public VagasEmpresaResponse ListaVagasEmpresa()
         {
-            return _listagemVagas.ListaVagasEmpresa();
+            return _vagasHandler.ListaVagasEmpresa();
         }
 
         [Route("/empresa/vagas/ativas")]
@@ -44,7 +44,7 @@ namespace EmpregaMais_API.Controllers
         [HttpGet]
         public IEnumerable<VagaModel> ListaVagasAtivasEmpresa()
         {
-            return _listagemVagas.ListaVagasAtivasEmpresa();
+            return _vagasHandler.ListaVagasAtivasEmpresa();
         }
 
         [Route("/empresa/cadastravaga")]
@@ -52,7 +52,31 @@ namespace EmpregaMais_API.Controllers
         [HttpPost]
         public void CadastraVagaEmpresa([FromBody] JsonObject vaga)
         {
-            _listagemVagas.CadastrarVagaEmpresa(vaga.ToString());
+            _vagasHandler.CadastrarVagaEmpresa(vaga.ToString());
+        }
+
+        [Route("/perfilpf/enviarcurriculo")]
+        [Authorize]
+        [HttpPost]
+        public string EnviarCurriculo([FromBody] JsonObject dadosVaga)
+        {
+            return _vagasHandler.CadastrarCurriculoVaga(dadosVaga.ToString());
+        }
+
+        [Route("/denunciaVaga")]
+        [Authorize]
+        [HttpPost]
+        public void RealizarDenunciaVaga([FromBody] JsonObject dadosDenuncia)
+        {
+            _vagasHandler.RealizarDenunciaVaga(dadosDenuncia.ToString());
+        }
+
+        [Route("/perfilpf/historicovagas")]
+        [Authorize]
+        [HttpGet]
+        public IEnumerable<HistoricoVagasResponse> ObterHistoricoVagas()
+        {
+            return _vagasHandler.ObterHistoricoVagas();
         }
     }
 }
