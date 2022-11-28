@@ -3,8 +3,10 @@
     public enum TipoDenuncia
     {
         NA = 0,
-        VagaFalsa = 1,
-        InformacoesFalsas = 2,
-        Discriminacao = 3,
+        InformacoesEnganadoras = 1,
+        PossivelGolpe = 2,
+        DescricaoPoucoClara = 3,
+        DescricaoCurta = 4,
+        Discriminacao = 5,
     }
 }
