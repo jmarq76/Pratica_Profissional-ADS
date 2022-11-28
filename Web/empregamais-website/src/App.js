@@ -1,18 +1,20 @@
 import './App.css';
-import FeaturedProducts from './FeaturedProducts';
 import {BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home } from './Home';
-import { Vaga } from './Vaga';
-import { CadastroUsuario } from './CadastroUsuario';
-import { Login } from './Login';
-import { PerfilPf } from './PerfilPf';
-import { Empresa } from './Empresa';
-import { CadastroEmpresa } from './CadastroEmpresa';
-import { PerfilPj } from './PerfilPj';
-import { CriarVaga } from './CriarVaga';
-import { VagasEmpresa } from './VagasEmpresa';
-import { VagaEmpresa } from './VagaEmpresa';
-import { BuscaVagas } from './BuscaVagas';
+import { Home } from './Shared/Home';
+import FeaturedProducts from './Vagas/FeaturedProducts';
+import { Vaga } from './Vagas/Vaga';
+import { CadastroUsuario } from './Ususario/CadastroUsuario';
+import { Login } from './Shared/Login';
+import { PerfilPf } from './Ususario/PerfilPf';
+import { CadastroEmpresa } from './Empresa/CadastroEmpresa';
+import { PerfilPj } from './Empresa/PerfilPj';
+import { CriarVaga } from './Vagas/CriarVaga';
+import { VagasEmpresa } from './Vagas/VagasEmpresa';
+import { VagaEmpresa } from './Vagas/VagaEmpresa';
+import { BuscaVagas } from './Vagas/BuscaVagas';
+import { Empresa } from './Empresa/Empresa';
+import { DenunciaVaga } from './Vagas/DenunciaVaga';
+import { HistoricoVagas } from './Ususario/HistoricoVagas';
 
 function App() {
 
@@ -33,7 +35,9 @@ function App() {
           <Route path='perfilpj/empresa/criarvaga' element={<CriarVaga />}/>
           <Route path='perfilpj/empresa/vagas' element={<VagasEmpresa />}/>
           <Route path='perfilpj/empresa/vagas/:vagaId' element={<VagaEmpresa />}/>
-          <Route path='buscaVagas/:busca' element={<BuscaVagas />}/>
+          <Route path='vagasdisponiveis/:busca' element={<BuscaVagas />}/>
+          <Route path='denunciavaga/:vagaId' element={<DenunciaVaga />}/>
+          <Route path='/perfilpf/hisotricoVagas' element={<HistoricoVagas />}/>
         </Routes>
       </BrowserRouter>
       </main>
