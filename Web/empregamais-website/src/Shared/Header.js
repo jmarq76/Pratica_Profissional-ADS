@@ -22,9 +22,11 @@ export const Header = (props) => {
               usuario?.tipoUsuario === 1 ? 
               <div className='div-main-navigation'>
               <Link to={'/perfil/' + usuario.userName}><h1>EmpregaMais</h1></Link> 
-              <ConsultaVagas />
-              <Link to={'/perfil/' + usuario.userName}>Perfil</Link>
-              <div onClick={handleLogout}>Logout</div>
+              { props.consultaVagas == "true" ? <div className='form-main-section'></div> : <ConsultaVagas />}
+              <div className="header-login-logout">
+                <Link to={'/perfil/' + usuario.userName}>Perfil</Link>
+                <div className="header-logout" onClick={handleLogout}>Logout</div>
+              </div>
               </div> :
               usuario?.tipoUsuario === 2 ?
               <div className='div-main-navigation'> 

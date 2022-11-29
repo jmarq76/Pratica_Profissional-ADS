@@ -43,6 +43,10 @@ a {
   justify-content: space-between;
 }
 
+.div-main-navigation a {
+  padding-left: 1em;
+}
+
 .links-main-navigation {
   display: flex;
   justify-content: space-between;
@@ -254,7 +258,11 @@ a {
   width: auto;
   max-width: 1500px;
   margin: auto;
-  height: 350px;
+  margin-top: 2em;
+  height: 200px;
+  display: block;
+  text-align: left;
+
 }
 
 .perfil-dados-div {
@@ -354,4 +362,136 @@ a {
 
 .nav-main-navigation .form-main-section {
   width: 1500px;
+}
+
+.perfil-main-dados {
+  margin-bottom: 1em;
+}
+
+.perfil-main-historico{
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;;
+  
+}
+
+.perfil-main-historico a{
+  color: #42bd9c;
+}
+
+.perfil-main-historico a:hover{
+  color: #db5a7c;
+}
+
+.btn-perfilpf{
+  background-color: #42bd9c;
+  height: 2em;
+  width: 6em;
+  margin-bottom: 1em;
+  display: block;
+}
+
+.btn-perfilpf:hover{
+  background-color: #6bc5ad;
+  height: 2em;
+  width: 6em;
+  margin-bottom: 1em;
+  display: block;
+}
+
+.perfil-dados-div{
+  text-align: left;
+  margin: auto;
+  height: auto;
+  padding-bottom: 2em;
+}
+
+.dados-div{
+  margin-bottom: 1em;
+}
+
+.dados-titulo{
+  font-weight: bold;
+}
+
+.div-historico-vaga{
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.denuncia-div{
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.denunca-titulo-div{
+  margin: auto;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.descricao-denuncia-div{
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.text-denuncia{
+  margin: auto;
+  margin-bottom: 1em;
+  width: 40%;
+  height: 10vw;
+}
+
+.tipo-denuncia-div{
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.opcao-denuncia{
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+  text-align: left;
+  margin-left: 30%;
+}
+
+.btn-denuncia-main{
+  background-color: #42bd9c;
+  height: 4em;
+  width: 10%;
+  margin-bottom: 2em;
+}
+
+.btn-denuncia-main:hover{
+  background-color: #6bc5ad;
+  height: 4em;
+  width: 10%;
+  margin-bottom: 2em;
+}
+
+.header-login-logout{
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  color: black;
+}
+
+.header-logout:hover{
+  cursor: pointer;
+  color: #9c42bd;
+}
+
+.header-login-logout a {
+  color: black;
+}
+
+.header-login-logout a:hover {
+  color: #9c42bd;
 }

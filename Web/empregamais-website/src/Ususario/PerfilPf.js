@@ -236,57 +236,57 @@ export const PerfilPf = () => {
             setStatus(error.response.status);
         })
     };
-
+    console.log(dados);
     if(dados.id && histAcademico.length > 0 && histProfissional.length > 0){
         return (
             <div>
                 <Header headerHome={true}/>
                 <div className="perfil-main-div">
-                    <div>{dados.usuario.nome}</div>
+                    <div className="perfil-main-dados">{dados.usuario.nome}</div>
                     <div>{dados.usuario.contatos.map((contato) => (
                         <div key={contato.id}>
-                            <div>{contato.descricao}</div>
+                            <div className="perfil-main-dados">{contato.descricao}</div>
                             </div>
                     ))}</div>
-                    <div>{dados.usuario.enderecos.logradouro}</div>
-                    <Link to="/perfilpf/hisotricoVagas">Histórico Vagas</Link>
+                    <div className="perfil-main-dados">{dados.usuario.enderecos.logradouro}, {dados.usuario.enderecos.complemento}. CEP: {dados.usuario.enderecos.cep}, {dados.usuario.enderecos.uf}/{dados.usuario.enderecos.pais}</div>
+                    <div className="perfil-main-historico"><Link to="/perfilpf/hisotricoVagas">Histórico Vagas</Link></div>
                 </div>
                 <div className="perfil-dados-div">
-                    <div>Cargo Desejado</div>
-                    { inputs.cargoDesejadoSaveEdit === "true" ? <input value={dados.cargoDesejado} onChange={handleChange} name="cargoDesejado"></input> : <div>{dados.cargoDesejado}</div>}
-                    { inputs.cargoDesejadoSaveEdit === "true" ? <button onClick={handleSave} name="cargoDesejadoSaveEdit">Salvar</button> : <button onClick={handleEdit} name="cargoDesejadoSaveEdit">Editar</button> }
-                    <div>Pretensao Salarial</div>
-                    { inputs.pretensaoSalarialSaveEdit === "true" ? <input value={dados.pretensaoSalarial} onChange={handleChange} name="pretensaoSalarial"></input> : <div>{dados.pretensaoSalarial}</div>}
-                    { inputs.pretensaoSalarialSaveEdit === "true" ? <button onClick={handleSave} name="pretensaoSalarialSaveEdit">Salvar</button> : <button onClick={handleEdit} name="pretensaoSalarialSaveEdit">Editar</button> }
-                    <div>Escolaridade</div>
-                    { inputs.escolaridadeSaveEdit === "true" ?<input value={dados.escolaridade} onChange={handleChange} name="escolaridade"></input> : <div>{dados.escolaridade}</div>}
-                    { inputs.escolaridadeSaveEdit === "true" ? <button onClick={handleSave} name="escolaridadeSaveEdit">Salvar</button> : <button onClick={handleEdit} name="escolaridadeSaveEdit">Editar</button> }
-                    <div>Resumo Profissional</div>
+                    <div className="dados-div dados-titulo">Cargo Desejado</div>
+                    { inputs.cargoDesejadoSaveEdit === "true" ? <input value={dados.cargoDesejado} onChange={handleChange} name="cargoDesejado"></input> : <div className="dados-div">{dados.cargoDesejado}</div>}
+                    { inputs.cargoDesejadoSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSave} name="cargoDesejadoSaveEdit">Salvar</button> : <button className="btn-perfilpf" onClick={handleEdit} name="cargoDesejadoSaveEdit">Editar</button> }
+                    <div className="dados-div dados-titulo">Pretensao Salarial</div>
+                    { inputs.pretensaoSalarialSaveEdit === "true" ? <input value={dados.pretensaoSalarial} onChange={handleChange} name="pretensaoSalarial"></input> : <div className="dados-div">R$ {dados.pretensaoSalarial}</div>}
+                    { inputs.pretensaoSalarialSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSave} name="pretensaoSalarialSaveEdit">Salvar</button> : <button className="btn-perfilpf" onClick={handleEdit} name="pretensaoSalarialSaveEdit">Editar</button> }
+                    <div className="dados-div dados-titulo">Escolaridade</div>
+                    { inputs.escolaridadeSaveEdit === "true" ?<input value={dados.escolaridade} onChange={handleChange} name="escolaridade"></input> : <div className="dados-div">{dados.escolaridade}</div>}
+                    { inputs.escolaridadeSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSave} name="escolaridadeSaveEdit">Salvar</button> : <button className="btn-perfilpf" onClick={handleEdit} name="escolaridadeSaveEdit">Editar</button> }
+                    <div className="dados-div dados-titulo">Resumo Profissional</div>
                     <div>
-                        { inputs.resumoProfSaveEdit === "true" ? <ReactQuill theme="snow" value={resumoProf} onChange={saveResumoProf}/> : <div dangerouslySetInnerHTML={{__html: resumoProf}}></div>} 
+                        { inputs.resumoProfSaveEdit === "true" ? <ReactQuill theme="snow" value={resumoProf} onChange={saveResumoProf}/> : <div className="dados-div" dangerouslySetInnerHTML={{__html: resumoProf}}></div>} 
                     </div>
                     <div>
-                       { inputs.resumoProfSaveEdit === "true" ? <button onClick={handleSave} name="resumoProfSaveEdit">Salvar</button> : <button onClick={handleEdit} name="resumoProfSaveEdit">Editar</button> } 
+                       { inputs.resumoProfSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSave} name="resumoProfSaveEdit">Salvar</button> : <button className="btn-perfilpf" onClick={handleEdit} name="resumoProfSaveEdit">Editar</button> } 
                     </div>
-                    <div>Historico Academico</div>
+                    <div className="dados-div dados-titulo">Historico Academico</div>
                     { 
                         inputs.histAcademicoSaveEdit === "true" ? 
                         <div>
-                            <div>Escolaridade</div>
+                            <div className="dados-div" dados-titulo>Escolaridade</div>
                                 <input value={adicionaHistAcademico.nivelEscolaridade} onChange={handleAdicionaHistAcademico} name="nivelEscolaridade"></input>
-                                <div>Nome Instituicao</div>
+                                <div className="dados-div dados-titulo">Nome Instituicao</div>
                                 <input value={adicionaHistAcademico.nomeInstituicao} onChange={handleAdicionaHistAcademico} name="nomeInstituicao"></input>
-                                <div>Nome Curso</div>
+                                <div className="dados-div dados-titulo">Nome Curso</div>
                                 <input value={adicionaHistAcademico.nomeCurso} onChange={handleAdicionaHistAcademico} name="nomeCurso"></input>
-                                <div>Data Inicio</div>
+                                <div className="dados-div dados-titulo">Data Inicio</div>
                                 <input value={adicionaHistAcademico.dataInicio} onChange={handleAdicionaHistAcademico} name="dataInicio"></input>
-                                <div>Data Conclusao</div>
+                                <div className="dados-div dados-titulo">Data Conclusao</div>
                                 <input value={adicionaHistAcademico.dataConclusao} onChange={handleAdicionaHistAcademico} name="dataConclusao"></input>
-                                <div>Cursando</div>
+                                <div className="dados-div dados-titulo">Cursando</div>
                                 { adicionaHistAcademico.cursando === "true" ? <input type="checkbox" checked="checked" value="false" onChange={handleAdicionaHistAcademico} name="cursando"></input> : <input type="checkbox" value="true" onChange={handleAdicionaHistAcademico} name="cursando"></input>}
-                            <button onClick={handleSaveAdicionaHistAcademico} name="histAcademicoSaveEdit">Salvar</button>
+                            <button className="btn-perfilpf" onClick={handleSaveAdicionaHistAcademico} name="histAcademicoSaveEdit">Salvar</button>
                         </div> : 
-                        <button onClick={handleEdit} name="histAcademicoSaveEdit">Adicionar</button> 
+                        <button className="btn-perfilpf" onClick={handleEdit} name="histAcademicoSaveEdit">Adicionar</button> 
                     }
                     {
                         histAcademico.map((histAcademico) => (
@@ -295,38 +295,38 @@ export const PerfilPf = () => {
                                 <div>
                                 {
                                         <div>
-                                        <div>Escolaridade</div>
+                                        <div className="dados-div dados-titulo">Escolaridade</div>
                                         <input value={histAcademico.nivelEscolaridade} onChange={handleHistAcademico} name="nivelEscolaridade" id={histAcademico.id}></input>
-                                        <div>Nome Instituicao</div>
+                                        <div className="dados-div dados-titulo">Nome Instituicao</div>
                                         <input value={histAcademico.nomeInstituicao} onChange={handleHistAcademico} name="nomeInstituicao" id={histAcademico.id}></input>
-                                        <div>Nome Curso</div>
+                                        <div className="dados-div dados-titulo">Nome Curso</div>
                                         <input value={histAcademico.nomeCurso} onChange={handleHistAcademico} name="nomeCurso"></input>
-                                        <div>Data Inicio</div>
+                                        <div className="dados-div dados-titulo">Data Inicio</div>
                                         <input value={histAcademico.dataInicio} onChange={handleHistAcademico} name="dataInicio"></input>
-                                        <div>Data Conclusao</div>
+                                        <div className="dados-div dados-titulo">Data Conclusao</div>
                                         <input value={histAcademico.dataConclusao} onChange={handleHistAcademico} name="dataConclusao"></input>
-                                        <div>Cursando</div>
+                                        <div className="dados-div dados-titulo">Cursando</div>
                                         { histAcademico.cursando === "true" ? <input type="checkbox" checked="checked" value="false" onChange={handleHistAcademico} name="cursando"></input> : <input type="checkbox" value="true" onChange={handleHistAcademico} name="cursando"></input>} 
-                                        { histAcademico.histAcademicoSaveEdit === "true" ? <button onClick={handleSaveHistAcademico} name="histAcademicoSaveEdit" id={histAcademico.id}>Salvar</button> : <button onClick={handleHistAcademicoEdit} name="histAcademicoSaveEdit" id={histAcademico.id}>Editar</button> }
+                                        { histAcademico.histAcademicoSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSaveHistAcademico} name="histAcademicoSaveEdit" id={histAcademico.id}>Salvar</button> : <button className="btn-perfilpf" onClick={handleHistAcademicoEdit} name="histAcademicoSaveEdit" id={histAcademico.id}>Editar</button> }
                                         </div>
                                 }
                                 </div> :
                                 <div>
                                 {
                                     <div>
-                                    <div>Escolaridade</div>
-                                    <div>{histAcademico.nivelEscolaridade}</div>
-                                    <div>Nome Instituicao</div>
-                                    <div>{histAcademico.nomeInstituicao}</div>
-                                    <div>Nome Curso</div>
-                                    <div>{histAcademico.nomeCurso}</div>
-                                    <div>Data Inicio</div>
-                                    <div>{histAcademico.dataInicio}</div>
-                                    <div>Data Conclusao</div>
-                                    <div>{histAcademico.dataConclusao}</div>
-                                    <div>Cursando</div>
-                                    <div>{histAcademico.cursando}</div>
-                                    { histAcademico.histAcademicoSaveEdit === "true" ? <button onClick={handleSaveHistAcademico} name="histAcademicoSaveEdit" id={histAcademico.id}>Salvar</button> : <button onClick={handleHistAcademicoEdit} name="histAcademicoSaveEdit" id={histAcademico.id}>Editar</button> }
+                                    <div className="dados-div dados-titulo">Escolaridade</div>
+                                    <div className="dados-div">{histAcademico.nivelEscolaridade}</div>
+                                    <div className="dados-div dados-titulo">Nome Instituicao</div>
+                                    <div className="dados-div">{histAcademico.nomeInstituicao}</div>
+                                    <div className="dados-div dados-titulo">Nome Curso</div>
+                                    <div className="dados-div">{histAcademico.nomeCurso}</div>
+                                    <div className="dados-div dados-titulo">Data Inicio</div>
+                                    <div className="dados-div">{histAcademico.dataInicio}</div>
+                                    <div className="dados-div dados-titulo">Data Conclusao</div>
+                                    <div className="dados-div">{histAcademico.dataConclusao}</div>
+                                    <div className="dados-div dados-titulo">Cursando</div>
+                                    <div className="dados-div">{histAcademico.cursando}</div>
+                                    { histAcademico.histAcademicoSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSaveHistAcademico} name="histAcademicoSaveEdit" id={histAcademico.id}>Salvar</button> : <button className="btn-perfilpf" onClick={handleHistAcademicoEdit} name="histAcademicoSaveEdit" id={histAcademico.id}>Editar</button> }
                                     </div>
                                 }
                                 
@@ -334,25 +334,25 @@ export const PerfilPf = () => {
                                 }
                             </div>
                         ))}
-                    <div>Historico Profissional</div>
+                    <div className="dados-div">Historico Profissional</div>
                     { 
                         inputs.histProfissionalSaveEdit === "true" ? 
                         <div>
-                            <div>Nome Empresa</div>
+                            <div className="dados-div dados-titulo">Nome Empresa</div>
                                 <input value={adicionaHistProfissional.nomeEmpresa} onChange={handleAdicionaHistProfissional} name="nomeEmpresa"></input>
-                                <div>Cargo</div>
+                                <div className="dados-div dados-titulo">Cargo</div>
                                 <input value={adicionaHistProfissional.cargo} onChange={handleAdicionaHistProfissional} name="cargo"></input>
-                                <div>Descricao Funcoes</div>
+                                <div className="dados-div dados-titulo">Descricao Funcoes</div>
                                 <textarea value={adicionaHistProfissional.descricao} onChange={handleAdicionaHistProfissional} name="descricao"></textarea>
-                                <div>Data Entrada</div>
+                                <div className="dados-div dados-titulo">Data Entrada</div>
                                 <input type="date" value={adicionaHistProfissional.dataEntrada} onChange={handleAdicionaHistProfissional} name="dataEntrada"></input>
-                                <div>Data Saida</div>
+                                <div className="dados-div dados-titulo">Data Saida</div>
                                 <input type="date" value={adicionaHistProfissional.dataSaida} onChange={handleAdicionaHistProfissional} name="dataSaida"></input>
-                                <div>Empresa Atual</div>
+                                <div className="dados-div dados-titulo">Empresa Atual</div>
                                 { adicionaHistProfissional.empresaAtual === "true" ? <input type="checkbox" checked="checked" value="false" onChange={handleAdicionaHistProfissional} name="empresaAtual"></input> : <input type="checkbox" value="true" onChange={handleAdicionaHistProfissional} name="empresaAtual"></input>}
-                            <button onClick={handleSaveAdicionaHistProfissional} name="histProfissionalSaveEdit">Salvar</button>
+                            <button className="btn-perfilpf" onClick={handleSaveAdicionaHistProfissional} name="histProfissionalSaveEdit">Salvar</button>
                         </div> : 
-                        <button onClick={handleEdit} name="histProfissionalSaveEdit">Adicionar</button> 
+                        <button className="btn-perfilpf" onClick={handleEdit} name="histProfissionalSaveEdit">Adicionar</button> 
                     }
                     { 
                         histProfissional.map((histProfissional) => (
@@ -360,45 +360,45 @@ export const PerfilPf = () => {
                                 {
                                 histProfissional.histProfissionalSaveEdit === "true" ? 
                         <div>
-                            <div>Nome Empresa</div>
+                            <div className="dados-div dados-titulo">Nome Empresa</div>
                             <input value={histProfissional.nomeEmpresa} onChange={handleHistProfissional} name="nomeEmpresa"></input>
-                            <div>Cargo</div>
+                            <div className="dados-div dados-titulo">Cargo</div>
                             <input value={histProfissional.cargo} onChange={handleHistProfissional} name="cargo"></input>
-                            <div>Descricao Funcoes</div>
+                            <div className="dados-div dados-titulo">Descricao Funcoes</div>
                             <textarea type="text" value={histProfissional.descricao} onChange={handleHistProfissional} name="descricao"></textarea>
-                            <div>Data Entrada</div>
+                            <div className="dados-div dados-titulo">Data Entrada</div>
                             <input value={histProfissional.dataEntrada} onChange={handleHistProfissional} name="dataEntrada"></input>
-                            <div>Data Saida</div>
+                            <div className="dados-div dados-titulo">Data Saida</div>
                             <input value={histProfissional.dataSaida} onChange={handleHistProfissional} name="dataSaida"></input>
-                            <div>Empresa Atual</div>
+                            <div className="dados-div dados-titulo">Empresa Atual</div>
                             { histProfissional.empresaAtual === "true" ? <input type="checkbox" checked="checked" value="false" onChange={handleHistProfissional} name="empresaAtual"></input> : <input type="checkbox" value="true" onChange={handleHistProfissional} name="empresaAtual"></input>} 
-                            { histProfissional.histProfissionalSaveEdit === "true" ? <button onClick={handleSaveHistProfissional} name="histProfissionalSaveEdit" id={histProfissional.id}>Salvar</button> : <button onClick={handleHistProfissionaloEdit} name="histProfissionalSaveEdit" id={histProfissional.id}>Editar</button> }
+                            { histProfissional.histProfissionalSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSaveHistProfissional} name="histProfissionalSaveEdit" id={histProfissional.id}>Salvar</button> : <button className="btn-perfilpf" onClick={handleHistProfissionaloEdit} name="histProfissionalSaveEdit" id={histProfissional.id}>Editar</button> }
                         </div> :
                         <div>
-                            <div>Nome Empresa</div>
-                            <div>{histProfissional.nomeEmpresa}</div>
-                            <div>Cargo</div>
-                            <div>{histProfissional.cargo}</div>
-                            <div>Descricao Funcoes</div>
-                            <div>{histProfissional.descricao}</div>
-                            <div>Data Entrada</div>
-                            <div>{histProfissional.dataEntrada}</div>
-                            <div>Data Saida</div>
-                            <div>{histProfissional.dataSaida}</div>
-                            <div>Empresa Atual</div>
-                            <div>{histProfissional.empresaAtual}</div>
-                            { histProfissional.histProfissionalSaveEdit === "true" ? <button onClick={handleSaveHistProfissional} name="histProfissionalSaveEdit" id={histProfissional.id}>Salvar</button> : <button onClick={handleHistProfissionaloEdit} name="histProfissionalSaveEdit" id={histProfissional.id}>Editar</button> }
+                            <div className="dados-div dados-titulo">Nome Empresa</div>
+                            <div className="dados-div">{histProfissional.nomeEmpresa}</div>
+                            <div className="dados-div dados-titulo">Cargo</div>
+                            <div className="dados-div">{histProfissional.cargo}</div>
+                            <div className="dados-div dados-titulo">Descricao Funcoes</div>
+                            <div className="dados-div">{histProfissional.descricao}</div>
+                            <div className="dados-div dados-titulo">Data Entrada</div>
+                            <div className="dados-div">{histProfissional.dataEntrada}</div>
+                            <div className="dados-div dados-titulo">Data Saida</div>
+                            <div className="dados-div">{histProfissional.dataSaida}</div>
+                            <div className="dados-div dados-titulo">Empresa Atual</div>
+                            <div className="dados-div">{histProfissional.empresaAtual}</div>
+                            { histProfissional.histProfissionalSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSaveHistProfissional} name="histProfissionalSaveEdit" id={histProfissional.id}>Salvar</button> : <button className="btn-perfilpf" onClick={handleHistProfissionaloEdit} name="histProfissionalSaveEdit" id={histProfissional.id}>Editar</button> }
                         </div>
                         }
                             </div>
                                 ))                      
                     }
-                    <div>Informacoes Complementares</div>
+                    <div className="dados-div dados-titulo">Informacoes Complementares</div>
                     <div>
-                        { inputs.infoCompSaveEdit === "true" ? <ReactQuill theme="snow" value={infoComp} onChange={saveInfoComp}/> : <div dangerouslySetInnerHTML={{__html: infoComp}}></div>} 
+                        { inputs.infoCompSaveEdit === "true" ? <ReactQuill theme="snow" value={infoComp} onChange={saveInfoComp}/> : <div className="dados-div" dangerouslySetInnerHTML={{__html: infoComp}}></div>} 
                     </div>
                     <div>
-                       { inputs.infoCompSaveEdit === "true" ? <button onClick={handleSave} name="infoCompSaveEdit">Salvar</button> : <button onClick={handleEdit} name="infoCompSaveEdit">Editar</button> } 
+                       { inputs.infoCompSaveEdit === "true" ? <button className="btn-perfilpf" onClick={handleSave} name="infoCompSaveEdit">Salvar</button> : <button className="btn-perfilpf" onClick={handleEdit} name="infoCompSaveEdit">Editar</button> } 
                     </div>
                     <div>
                     </div>

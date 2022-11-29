@@ -7,7 +7,7 @@ export const BuscaVagas = () => {
 
     return (
         <div>
-            <Header />
+            <Header consultaVagas="true"/>
             <ConsultaVagas valorBusca={busca}/>
         </div>
     )

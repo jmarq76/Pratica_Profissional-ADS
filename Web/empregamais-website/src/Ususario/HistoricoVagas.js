@@ -31,13 +31,13 @@ export const HistoricoVagas = () => {
         return (
             <div>
                 <Header />
-                <div>Historico Vagas</div>
+                <div className="div-historico-vaga">Historico Vagas</div>
                 {histVagas.map((histvaga) => (
-                    <div key={histvaga.vaga.id}>
-                        <Link to={"/vagas/" + histvaga.vaga.id}>{histvaga.vaga.titulo}</Link>
-                        <div>{histvaga.empresa.nome}</div>
-                        <div>Data envio currículo: {new Date(histvaga.vagaUsuario.dataEnvioPerfilPf).toLocaleDateString()}</div>
-                        <div>{histvaga.vaga.descricao}</div>
+                    <div className='card' key={histvaga.vaga.id}>
+                        <Link to={"/vagas/" + histvaga.vaga.id} className='vaga-titulo'>{histvaga.vaga.titulo}</Link>
+                        <div className='usuario-nome'>{histvaga.empresa.nome}</div>
+                        <div className='vaga-dataCriacao'>Data envio currículo: {new Date(histvaga.vagaUsuario.dataEnvioPerfilPf).toLocaleDateString()}</div>
+                        <div className='vaga-descricao'>{histvaga.vaga.descricao}</div>
                     </div>
                 ))}
             </div>
