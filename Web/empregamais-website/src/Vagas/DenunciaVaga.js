@@ -55,24 +55,34 @@ export const DenunciaVaga = () => {
         return (
             <div>
                 <Header />
-                <div>Denunciar Vaga</div>
-                <div>{vaga.Vaga.Titulo}</div>
+                <div className="denuncia-div">Denunciar Vaga</div>
+                <div className="denunca-titulo-div">Título Vaga: {vaga.Vaga.Titulo}</div>
                 <form>
-                    <div>Descrição Denúncia</div>
-                    <textarea value={denunciaVaga.descricao} onChange={handleDenunciaVaga} name="descricao"></textarea>
-                    <div>Tipo Denuncia</div>
-                    <label>Informações Enganadoras</label>
+                    <div className="descricao-denuncia-div">Descrição Denúncia:</div>
+                    <textarea className="text-denuncia" value={denunciaVaga.descricao} onChange={handleDenunciaVaga} name="descricao"></textarea>
+                    <div className="tipo-denuncia-div">Tipo Denuncia</div>
+                    <div className="opcao-denuncia">
                     <input type='radio' name="tipoDenuncia" value={1} onChange={handleDenunciaVaga}></input>
-                    <label>Possível Golpe</label>
+                    <label>Informações Enganadoras</label>
+                    </div>
+                    <div className="opcao-denuncia">
                     <input type='radio' name="tipoDenuncia" value={2} onChange={handleDenunciaVaga}></input>
-                    <label>Descrição da vaga pouco clara</label>
+                    <label>Possível Golpe</label>
+                    </div>
+                    <div className="opcao-denuncia">
                     <input type='radio' name="tipoDenuncia" value={3} onChange={handleDenunciaVaga}></input>
-                    <label>Descrição da vaga muito curta</label>
+                    <label>Descrição da vaga pouco clara</label>
+                    </div>
+                    <div className="opcao-denuncia">
                     <input type='radio' name="tipoDenuncia" value={4} onChange={handleDenunciaVaga}></input>
-                    <label>Vaga fazendo discriminação</label>
+                    <label>Descrição da vaga muito curta</label>
+                    </div>
+                    <div className="opcao-denuncia">
                     <input type='radio' name="tipoDenuncia" value={5} onChange={handleDenunciaVaga}></input>
+                    <label>Vaga fazendo discriminação</label>
+                    </div>
                 </form>
-                <button onClick={handleSaveDenuncia}>Enviar Denúncia</button>
+                <button className="btn-denuncia-main" onClick={handleSaveDenuncia}>Enviar Denúncia</button>
             </div>
         )
     }
