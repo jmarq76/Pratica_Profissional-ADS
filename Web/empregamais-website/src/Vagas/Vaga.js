@@ -11,6 +11,9 @@ export const Vaga = () => {
     const navigate = useNavigate();
 
     const enviarCurriculo = () => {
+        if(!JSON.parse(localStorage.getItem("user"))){
+            navigate('/login')
+        } else {
             const config = {
                 headers: {
                     'Authorization' : JSON.parse(localStorage.getItem("user"))?.token,
@@ -22,12 +25,19 @@ export const Vaga = () => {
         .then((res) => {
             setResponseData(res.data);
         }).catch((err) => {
-            setResponseStatus(err);
+            setResponseData(err);
         })
+        }
+            
     };
 
     const handleDenunciaVaga = () => {
-        navigate('/denunciavaga/' + vagaId);
+        if(!JSON.parse(localStorage.getItem("user"))){
+            navigate('/login')
+        }
+        else{
+            navigate('/denunciavaga/' + vagaId);
+        }
     }
 
     useEffect(() => {
@@ -50,26 +60,26 @@ export const Vaga = () => {
         .catch((err) => {
         });
     };
-
+    console.log(vaga);
     if(vaga){
         return(
             <div>
-                <Header headerHome='true'/>
-                <div>
-                    {vaga.Vaga.Titulo}
-          </div>
-          <div>Nome Empresa</div>
-          <div>{vaga.Vaga.Local}</div>
-          <div>Faixa Salarial: {vaga.Vaga.FaixaSalarial}</div>
-          <div>{vaga.Vaga.NivelSenioridade}</div>
-          <div>Expira em: {new Date(vaga.Vaga.DataExpiracao).toLocaleDateString()}</div>
-          <div>{vaga.Vaga.Descricao}</div>
-          <div>{vaga.Vaga.Beneficios}</div>
-          <div>{vaga.Vaga.Idiomas}</div>
-          <div>{vaga.Vaga.OutrosRequisitos}</div>
-          <button onClick={enviarCurriculo}>Enviar Currículo</button>
-          <button onClick={handleDenunciaVaga}>Denunciar</button>
-          {responseData === null ? "" : responseData === "CadastroJaFeito" ? <h2>O seu currículo já está cadastrado nesta vaga</h2> : <h2>Currículo Enviado com Sucesso</h2>}
+                <Header />
+                <div className="main-div-vaga">
+                    <div className="dados-div-vaga titulo-div-vaga">{vaga.Vaga.Titulo}</div>
+                    <div className="dados-div-vaga dados-empresa-div-vaga">{vaga.Usuario.Nome}</div>
+                    <div className="dados-div-vaga dados-empresa-div-vaga">{vaga.Vaga.Local}</div>
+                    <div className="dados-div-vaga dados-empresa-div-vaga">Faixa Salarial: R$ {vaga.Vaga.FaixaSalarial}</div>
+                    <div className="dados-div-vaga dados-empresa-div-vaga">{vaga.Vaga.NivelSenioridade}</div>
+                    <div className="dados-div-vaga expira-div-vaga">Expira em: {new Date(vaga.Vaga.DataExpiracao).toLocaleDateString()}</div>
+                    <div className="dados-div-vaga descricao-div-vaga">{vaga.Vaga.Descricao}</div>
+                    {/* <div className="dados-div-vaga">{vaga.Vaga.Beneficios}</div>
+                    <div className="dados-div-vaga">{vaga.Vaga.Idiomas}</div> */}
+                    <div className="dados-div-vaga descricao-div-vaga">{vaga.Vaga.OutrosRequisitos}</div>
+                    <button onClick={enviarCurriculo} className="btn-curriculo">Enviar Currículo</button>
+                    <button onClick={handleDenunciaVaga} className="btn-denuncia">Denunciar</button>
+                    {responseData === null ? "" : responseData === "CadastroJaFeito" ? <h2>O seu currículo já está cadastrado nesta vaga</h2> : <h2>Currículo Enviado com Sucesso</h2>}
+                </div>
             </div>
         )
     } else {

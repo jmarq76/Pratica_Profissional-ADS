@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import FeaturedProducts from "./FeaturedProducts"
+import ConsultaVagas from "./ConsultaVagas"
 import { Header } from "../Shared/Header";
 
 export const BuscaVagas = () => {
@@ -8,7 +8,7 @@ export const BuscaVagas = () => {
     return (
         <div>
             <Header />
-            <FeaturedProducts valorBusca={busca}/>
+            <ConsultaVagas valorBusca={busca}/>
         </div>
     )
 }

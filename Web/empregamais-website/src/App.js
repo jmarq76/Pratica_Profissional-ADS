@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from './Shared/Home';
-import FeaturedProducts from './Vagas/FeaturedProducts';
+import ConsultaVagas from './Vagas/ConsultaVagas';
 import { Vaga } from './Vagas/Vaga';
 import { CadastroUsuario } from './Ususario/CadastroUsuario';
 import { Login } from './Shared/Login';
@@ -15,6 +15,8 @@ import { BuscaVagas } from './Vagas/BuscaVagas';
 import { Empresa } from './Empresa/Empresa';
 import { DenunciaVaga } from './Vagas/DenunciaVaga';
 import { HistoricoVagas } from './Ususario/HistoricoVagas';
+import { ParaVoce } from './Shared/ParaVoce';
+import { Institucional } from './Shared/Institucional';
 
 function App() {
 
@@ -24,7 +26,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route path='search' element={<FeaturedProducts/>}/>
+          <Route path='search' element={<ConsultaVagas/>}/>
           <Route path='vagas/:vagaId' element={<Vaga />}/>
           <Route path='cadastro/usuario' element={<CadastroUsuario />}/>
           <Route path='login' element={<Login />}/>
@@ -38,6 +40,8 @@ function App() {
           <Route path='vagasdisponiveis/:busca' element={<BuscaVagas />}/>
           <Route path='denunciavaga/:vagaId' element={<DenunciaVaga />}/>
           <Route path='/perfilpf/hisotricoVagas' element={<HistoricoVagas />}/>
+          <Route path='para-voce' element={<ParaVoce />}/>
+          <Route path='institucional' element={<Institucional />}/>
         </Routes>
       </BrowserRouter>
       </main>

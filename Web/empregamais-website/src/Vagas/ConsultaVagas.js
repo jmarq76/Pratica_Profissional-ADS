@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-const FeaturedProducts = (props) => {
+const ConsultaVagas = (props) => {
     const[products, setProducts] = useState([]);
 
     const [inputValue, setInputValue] = useState("");
@@ -62,4 +62,4 @@ const FeaturedProducts = (props) => {
     </div>
   );
 };
-export default FeaturedProducts;
+export default ConsultaVagas;

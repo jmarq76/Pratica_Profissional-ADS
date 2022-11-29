@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import FeaturedProducts from "../Vagas/FeaturedProducts";
+import ConsultaVagas from "../Vagas/ConsultaVagas";
 
 export const Header = (props) => {
   const [usuario, setUsuario] = useState("");
@@ -16,20 +16,19 @@ export const Header = (props) => {
     setUsuario(JSON.parse(localStorage.getItem("user")));
   }, []);
   
-    if(props.headerHome){
         return (
             <nav className='nav-main-navigation'>
             {
               usuario?.tipoUsuario === 1 ? 
               <div className='div-main-navigation'>
               <Link to={'/perfil/' + usuario.userName}><h1>EmpregaMais</h1></Link> 
-              <FeaturedProducts />
+              <ConsultaVagas />
               <Link to={'/perfil/' + usuario.userName}>Perfil</Link>
               <div onClick={handleLogout}>Logout</div>
               </div> :
               usuario?.tipoUsuario === 2 ?
               <div className='div-main-navigation'> 
-              <Link to={'/empresa/' + usuario.userName}></Link>
+              <Link to={'/empresa/' + usuario.userName} className='info-main-nav'></Link>
               <div className='links-main-navigation'>
               <Link to='/perfilpj/empresa/criarvaga'>Criar Vaga</Link>
               <Link to='/perfilpj/empresa/vagas'>Visualizar Vagas</Link>
@@ -40,9 +39,9 @@ export const Header = (props) => {
               <div className='div-main-navigation'> 
               <Link to='/'><h1>EmpregaMais</h1></Link>
               <div className='links-main-navigation'>
-              <p>Para Você</p>
-              <Link to='empresa'>Para Empresas</Link>
-              <p>Institucional</p>
+              <Link to='/para-voce'><div className='info-main-nav'>Para Você</div></Link>
+              <Link to='/empresa' ><div className='info-main-nav'>Para Empresas</div></Link>
+              <Link to='/institucional'><div className='info-main-nav'>Institucional</div></Link>
               </div>
               <div className='buttons-main-navigation'>
                   <Link to={'/login'}>Entrar</Link>
@@ -52,25 +51,4 @@ export const Header = (props) => {
             }
         </nav>
         )
-    } else {
-        return (
-            <nav className='nav-main-navigation'>
-              {
-              usuario?.tipoUsuario === 1 ? 
-              <div className='div-main-navigation'>
-              <Link to={'/perfil/' + usuario.userName}><h1>EmpregaMais</h1></Link>
-              <Link to={'/perfil/' + usuario.userName}>Perfil</Link>
-              <div onClick={handleLogout}>Logout</div>
-              </div> :
-              <div className='div-main-navigation'>
-              <Link to='/'><h1>EmpregaMais</h1></Link>
-              <div className='buttons-main-navigation'>
-                  <Link to={'/login'}>Entrar</Link>
-                  <Link to={'/cadastro/usuario'}>Cadastre-se gratuitamente</Link>
-              </div>
-              </div>
-    }
-            </nav>
-        )
-    }
 }
