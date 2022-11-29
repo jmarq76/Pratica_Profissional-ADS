@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react"
-import { CadastroSucesso } from "./CadastroSucesso";
-import { Header } from "./Header"
+import { CadastroSucesso } from "../Shared/CadastroSucesso";
+import { Header } from "../Shared/Header"
 
 export const CadastroUsuario = () =>{
     const [inputs, setInputs] = useState({});
@@ -62,7 +62,7 @@ export const CadastroUsuario = () =>{
                                 <label className="cadastro-usuario-lbl">País</label>
                                 <input className="cadastro-usuario-inpt" required value={inputs.pais || ""} onChange={handleChange} name="pais"></input>
                             </div>
-                            <button onClick={enviaDados}>Cadastrar</button>
+                            <button onClick={enviaDados} className="btn-cadastro">Cadastrar</button>
                         </form>
                     </div>
     

@@ -13,6 +13,12 @@ namespace Domain.Services
             _repository = repository;
         }
 
+        public void AtualizaPerfilPf(PerfilPfModel perfilPf)
+        {
+            perfilPf.Id = _repository.Obter<PerfilPfModel>(pf => pf.IdUsuario == perfilPf.IdUsuario).Id;
+            _repository.Atualizar(perfilPf);
+        }
+
         public void CadastraPerfilPf(PerfilPfModel perfilPf)
         {
             _repository.Inserir(perfilPf);

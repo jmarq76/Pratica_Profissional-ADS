@@ -20,14 +20,14 @@ namespace Infrastructure.Repository
 
             using var context = _contextFactory.CreateDbContext();
             context.Update(entity);
-            context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
         public void Deletar<TEntity>(TEntity entity) where TEntity : BaseModel
         {
             using var context = _contextFactory.CreateDbContext();
             context.Remove(entity);
-            context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
         public void Inserir<TEntity>(TEntity entity) where TEntity : BaseModel

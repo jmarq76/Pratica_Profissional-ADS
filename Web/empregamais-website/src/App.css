@@ -6,54 +6,93 @@
   display: block;
 }
 
+body {
+  background-color: #99ddcb;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  height: 0%;
+}
+
+.nav-main-navigation {
+  background-color: #42bd9c;
+}
+
+.info-main-nav {
+  margin-top: 1.5em;
+  margin-left: 1em;
+  color: black;
+}
+
+.info-main-nav:hover {
+  color: #9c42bd;
+}
+
+.nav-main-navigation h1 {
+  color: black;
+}
+
+.nav-main-navigation h1:hover {
+  color: #9c42bd;
+}
+
 .div-main-navigation {
   display: flex;
   justify-content: space-between;
 }
 
-.links-main-navigation{
+.links-main-navigation {
   display: flex;
   justify-content: space-between;
 }
 
-.links-main-navigation p{
+.links-main-navigation p {
   margin: auto 1em auto 1em;
 }
 
-.buttons-main-navigation{
+.buttons-main-navigation {
   display: flex;
   justify-content: space-between;
 }
 
-.buttons-main-navigation a{
+.buttons-main-navigation a {
   margin: auto 0.5em auto 0.5em;
   height: 50%;
   border-radius: 10px;
-  border-color: aliceblue;
-  background-color: cornflowerblue;
 }
 
-.sec-main-section{
+.buttons-main-navigation a:hover {
+  margin: auto 0.5em auto 0.5em;
+  height: 50%;
+  border-radius: 10px;
+  color: #9c42bd;
+}
+
+.sec-main-section {
   display: block;
 }
 
-.form-main-section{
+.form-main-section {
   display: block;
   height: 2.5em;
+  margin-top: 1em;
 }
 
-.input-main-section{
+.input-main-section {
   width: 40%;
   height: 80%;
   margin-right: 0.5em;
   border-radius: 5px;
-  border-color: aliceblue
+  border-color: aliceblue;
 }
 
-.btn-main-section{
+.btn-main-section {
   height: 95%;
   border-radius: 5px;
   border-color: aliceblue;
+
 }
 
 .card {
@@ -66,46 +105,57 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   margin: auto;
   margin-bottom: 1.5em;
+  background-color: aliceblue;
 }
 
 .item-container {
   display: block;
   align-items: center;
   flex-wrap: wrap;
+  padding-top: 1em;
   gap: 2em;
 }
 
-.vaga-titulo{
+.vaga-titulo {
   text-align: left;
   margin-bottom: 0.2em;
   font-size: large;
   font-weight: bold;
+  color: #42bd9c;
 }
 
-.usuario-nome{
+.vaga-titulo:hover {
+  text-align: left;
+  margin-bottom: 0.2em;
+  font-size: large;
+  font-weight: bold;
+  color: #6bc5ad;
+}
+
+.usuario-nome {
   text-align: left;
   font-size: 14px;
   margin-top: 0.1em;
   margin-bottom: 0.2em;
 }
 
-.vaga-senioridade{
+.vaga-senioridade {
   text-align: left;
   font-size: 12px;
   margin-top: 0.1em;
 }
 
-.vaga-descricao{
+.vaga-descricao {
   text-align: left;
 }
 
-.local-data{
+.local-data {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
 }
 
-.cadastro-usuario-main-div{
+.cadastro-usuario-main-div {
   display: block;
   margin: auto;
   max-width: 1100px;
@@ -113,7 +163,7 @@
   padding-top: 2em;
 }
 
-.cadastro-usuario-card-div{
+.cadastro-usuario-card-div {
   display: block;
   margin: auto;
   border-color: black;
@@ -122,24 +172,25 @@
   max-width: 750px;
 }
 
-.cadastro-usuario-login{
+.cadastro-usuario-login {
   display: block;
   margin: auto;
 }
 
-.cadastro-usuario-form{
+.cadastro-usuario-form {
   display: block;
   margin: auto;
   max-width: 50%;
   align-items: left;
 }
-.cadastro-usuario-lbl{
+.cadastro-usuario-lbl {
   display: block;
-  margin: auto;	
+  margin: auto;
   text-align: left;
+  font-weight: bold;
 }
 
-.cadastro-usuario-inpt{
+.cadastro-usuario-inpt {
   display: block;
   width: 100%;
   height: 2em;
@@ -151,26 +202,26 @@
   background-color: beige;
 }
 
-.login-div-card{
+.login-div-card {
   max-width: 1100px;
   margin: auto;
   padding-top: 3em;
-  padding-bottom: 3em;;
+  padding-bottom: 3em;
   height: 250px;
 }
 
-.login-form-card{
+.login-form-card {
   max-width: 40%;
   margin: auto;
   height: 95%;
 }
 
-.login-lbl-card{
+.login-lbl-card {
   display: block;
   text-align: center;
 }
 
-.login-in-card{
+.login-in-card {
   align-items: center;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -181,24 +232,126 @@
   background-color: beige;
 }
 
-.login-btn-card{
+.login-btn-card {
   display: block;
   margin: auto;
   margin-top: 1.5em;
   width: 25%;
   height: 15%;
+  background-color: #42bd9c;
 }
 
-.perfil-main-div{
+.login-btn-card:hover {
+  display: block;
+  margin: auto;
+  margin-top: 1.5em;
+  width: 25%;
+  height: 15%;
+  background-color: #6bc5ad;
+}
+
+.perfil-main-div {
   width: auto;
   max-width: 1500px;
   margin: auto;
   height: 350px;
 }
 
-.perfil-dados-div{
+.perfil-dados-div {
   width: auto;
   max-width: 1300px;
   margin: auto;
   height: 350px;
+}
+
+.main-div-text {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1.5em;
+}
+
+.btn-cadastro {
+  margin: auto;
+  margin-bottom: 1em;
+  width: 35%;
+  height: 3em;
+  background-color: #42bd9c;
+}
+
+.btn-cadastro:hover {
+  margin: auto;
+  margin-bottom: 1em;
+  width: 35%;
+  height: 3em;
+  background-color: #6bc5ad;
+}
+
+.main-div-vaga {
+  margin: auto;
+  margin-top: 2.5em;
+  width: 30%;
+}
+
+.dados-div-vaga {
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.titulo-div-vaga {
+  font-weight: bold;
+}
+
+.dados-empresa-div-vaga{
+  text-align: left;
+  margin-bottom: 0.5em;
+  width: 70%;
+}
+
+.expira-div-vaga {
+  text-align: right;
+  position: relative;
+}
+
+.descricao-div-vaga{
+  text-align: left;
+}
+
+.btn-curriculo{
+  display: block;
+  margin: auto;
+  width: 50%;
+  height: 3em;
+  margin-bottom: 1em;
+  background-color: #42bd9c;
+}
+
+.btn-curriculo:hover{
+  display: block;
+  margin: auto;
+  width: 50%;
+  height: 3em;
+  margin-bottom: 1em;
+  background-color: #6bc5ad;
+}
+
+.btn-denuncia {
+  display: block;
+  margin: auto;
+  width: 30%;
+  height: 2em;
+  margin-bottom: 1em;
+  background-color: #dd99ab;
+}
+
+.btn-denuncia:hover {
+  display: block;
+  margin: auto;
+  width: 30%;
+  height: 2em;
+  margin-bottom: 1em;
+  background-color: #db5a7c;
+}
+
+.nav-main-navigation .form-main-section {
+  width: 1500px;
 }

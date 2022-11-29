@@ -1,9 +1,9 @@
 ﻿using Application.Interfaces;
-using AutoMapper;
 using Domain.Interfaces;
 using Infrastructure.Models;
+using Newtonsoft.Json;
 
-namespace Application.PerfilPf
+namespace Application.Handlers
 {
     public class PerfilPfHandler : IPerfilPfHandler
     {
@@ -13,13 +13,22 @@ namespace Application.PerfilPf
         private readonly IScopeContext _scopeContext;
         private readonly IEnderecoService _enderecoService;
 
-        public PerfilPfHandler(IUsuarioService usuarioService, IPerfilPfService perfilPfService, IMapper mapper, IScopeContext scopeContext, IContatoService contatoService, IEnderecoService enderecoService)
+        public PerfilPfHandler(IUsuarioService usuarioService, IPerfilPfService perfilPfService, IScopeContext scopeContext, IContatoService contatoService, IEnderecoService enderecoService)
         {
             _usuarioService = usuarioService;
             _perfilPfService = perfilPfService;
             _scopeContext = scopeContext;
             _contatoService = contatoService;
             _enderecoService = enderecoService;
+        }
+
+        public void CadastraDadosPerfilPf(string dadosPerfilPf)
+        {
+            var perfilPf = JsonConvert.DeserializeObject<PerfilPfModel>(dadosPerfilPf);
+
+            perfilPf.IdUsuario = _scopeContext.Id;
+
+            _perfilPfService.AtualizaPerfilPf(perfilPf);
         }
 
         public PerfilPfModel ObtemPerfil()

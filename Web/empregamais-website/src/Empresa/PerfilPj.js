@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { Header } from "./Header";
+import { Header } from "../Shared/Header";
 
 export const PerfilPj = () => {
     const [dadosPerfilPj, setDadosPerfilPj] = useState({});

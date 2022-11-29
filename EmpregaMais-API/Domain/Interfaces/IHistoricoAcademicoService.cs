@@ -5,7 +5,8 @@ namespace Domain.Interfaces
     public interface IHistoricoAcademicoService
     {
         void CadastrarHistoricoAcademico(HistoricoAcademicoModel historicoAcademico);
-        void ObtemHistoricoAcadamento(Guid id);
+        IEnumerable<HistoricoAcademicoModel> ObtemHistoricosAcademicos(Guid idPerfil);
         void DeletarHistoricoAcademico(Guid id);
+        void AtualizarHistoricoAcademico(HistoricoAcademicoModel historicoAcademico);
     }
 }

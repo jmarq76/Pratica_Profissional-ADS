@@ -8,11 +8,11 @@ namespace Infrastructure.Models
     {
         public Guid IdPerfil { get; set; }
         public NivelEscolaridade NivelEscolaridade { get; set; }
-        public string NomeInstituicao { get; set; }
-        public string NomeCurso { get; set; }
-        public DateTime DataInicio { get; set; }
-        public DateTime DataConclusao { get; set; }
-        public bool Cursando { get; set; }
+        public string? NomeInstituicao { get; set; }
+        public string? NomeCurso { get; set; }
+        public DateTime? DataInicio { get; set; }
+        public DateTime? DataConclusao { get; set; }
+        public bool? Cursando { get; set; }
 
         [NotMapped]
         public PerfilPfModel PerfilPf { get; set; }

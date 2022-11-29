@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import FeaturedProducts from "./FeaturedProducts"
-import { Header } from "./Header";
+import ConsultaVagas from "./ConsultaVagas"
+import { Header } from "../Shared/Header";
 
 export const BuscaVagas = () => {
     const busca = useParams();
@@ -8,7 +8,7 @@ export const BuscaVagas = () => {
     return (
         <div>
             <Header />
-            <FeaturedProducts valorBusca={busca}/>
+            <ConsultaVagas valorBusca={busca}/>
         </div>
     )
 }

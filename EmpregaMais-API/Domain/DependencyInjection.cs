@@ -15,6 +15,8 @@ namespace Domain
             services.AddScoped<IPerfilPfService, PerfilPfService>();
             services.AddScoped<IPerfilPjService, PerfilPjService>();
             services.AddScoped<IVagaService, VagaService>();
+            services.AddScoped<IHistoricoAcademicoService, HistoricoAcademicoService>();
+            services.AddScoped<IHistoricoProfissionalService, HistoricoProfissionalService>();
             services.AddScoped<IDenunciaService, DenunciaService>();
 
             return services;

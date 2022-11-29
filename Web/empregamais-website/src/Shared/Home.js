@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom"
-import FeaturedProducts from "./FeaturedProducts"
+import ConsultaVagas from "../Vagas/ConsultaVagas"
 import { Header } from "./Header"
 
 export const Home = () =>{
@@ -9,7 +8,7 @@ export const Home = () =>{
         <section className='sec-main-section'>
           <div className='div-main-section'>
             <h1 className='h1-main-section'>Encontre sua vaga de Emprego</h1>
-            <FeaturedProducts />
+            <ConsultaVagas />
           </div>
         </section>
       </header>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react"
 import ReactQuill from "react-quill"
-import { Header } from "./Header"
+import { Header } from "../Shared/Header"
 
 export const CriarVaga = () => {
     const [descricao, setDescricao] = useState("");
